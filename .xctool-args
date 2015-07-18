@@ -1,0 +1,7 @@
+[
+  "-project", "ToDo.xcodeproj",
+  "-scheme", "ToDo",
+  "-configuration", "Debug",
+  "-sdk", "iphonesimulator",
+  "-arch", "i386"
+]
