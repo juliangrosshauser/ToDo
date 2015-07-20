@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */; };
 		B9BCF6041B59A5A100BC9AD5 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BCF6031B59A5A100BC9AD5 /* GroupsCollectionViewController.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
 		B9CD69BC1B583C920072DDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B41B583C920072DDBD /* LaunchScreen.storyboard */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9BCF6031B59A5A100BC9AD5 /* GroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionViewController.swift; path = "View Controllers/GroupsCollectionViewController.swift"; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD69941B583BD30072DDBD /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B9354F001B5D9F8E00F6A320 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9BCF6051B59A5A700BC9AD5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +97,7 @@
 				B9CD69B11B583C920072DDBD /* ToDo */,
 				B9CD69BF1B583CDB0072DDBD /* ToDoTests */,
 				B9CD69C71B583CFE0072DDBD /* ToDoUITests */,
+				B9354F001B5D9F8E00F6A320 /* Frameworks */,
 				B9CD69811B583BD30072DDBD /* Products */,
 			);
 			sourceTree = "<group>";
