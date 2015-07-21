@@ -13,10 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var window: UIWindow? = {
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
         window.backgroundColor = .whiteColor()
-        window.rootViewController = UINavigationController(rootViewController: GroupsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
-        
         return window
     }()
 
