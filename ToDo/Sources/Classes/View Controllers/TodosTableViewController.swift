@@ -10,4 +10,13 @@ import UIKit
 
 class TodosTableViewController: UITableViewController {
 
+    init() {
+        super.init(style: .Plain)
+
+        title = "Todos"
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

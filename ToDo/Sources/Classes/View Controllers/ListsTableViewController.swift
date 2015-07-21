@@ -10,4 +10,13 @@ import UIKit
 
 class ListsTableViewController: UITableViewController {
 
+    init() {
+        super.init(style: .Plain)
+
+        title = "Lists"
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }
