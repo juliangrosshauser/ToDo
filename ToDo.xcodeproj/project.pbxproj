@@ -10,6 +10,7 @@
 		B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */; };
 		B9354F021B5DA03200F6A320 /* ToDo.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B9354F011B5DA03200F6A320 /* ToDo.entitlements */; };
 		B9847CB11B5EEC44002FEEE7 /* ListsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */; };
+		B9847CB41B5EECA1002FEEE7 /* TodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
 		B9CD69BC1B583C920072DDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B41B583C920072DDBD /* LaunchScreen.storyboard */; };
 		B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD69BA1B583C920072DDBD /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 		B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9354F011B5DA03200F6A320 /* ToDo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToDo.entitlements; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListsTableViewController.swift; path = "ToDo/Sources/Classes/View Controllers/ListsTableViewController.swift"; sourceTree = "<group>"; };
+		B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodosTableViewController.swift; path = "ToDo/Sources/Classes/View Controllers/TodosTableViewController.swift"; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD69941B583BD30072DDBD /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD699F1B583BD30072DDBD /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */,
+				B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */,
 			);
 			name = "View Controllers";
 			path = ../../..;
@@ -364,6 +367,7 @@
 			files = (
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListsTableViewController.swift in Sources */,
+				B9847CB41B5EECA1002FEEE7 /* TodosTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
