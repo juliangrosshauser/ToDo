@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let splitViewController = UISplitViewController()
+        let masterViewController = ListsTableViewController()
+        let detailViewController = TodosTableViewController()
+        splitViewController.viewControllers = [masterViewController, detailViewController]
+
+        window?.rootViewController = splitViewController
         window?.makeKeyAndVisible()
         
         return true
