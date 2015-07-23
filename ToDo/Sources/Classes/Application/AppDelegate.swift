@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let splitViewController = UISplitViewController()
-        let masterViewController = UINavigationController(rootViewController: ListsTableViewController())
+        let masterViewController = UINavigationController(rootViewController: ListController())
         let detailViewController = UINavigationController(rootViewController: TodosTableViewController())
         splitViewController.viewControllers = [masterViewController, detailViewController]
 

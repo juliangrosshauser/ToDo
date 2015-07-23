@@ -1,5 +1,5 @@
 //
-//  ListsTableViewController.swift
+//  ListController.swift
 //  ToDo
 //
 //  Created by Julian Grosshauser on 21/07/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ListsTableViewController: UITableViewController {
+class ListController: UIViewController {
 
     init() {
-        super.init(style: .Plain)
+        super.init(nibName: nil, bundle: nil)
 
         title = "Lists"
     }

@@ -14,7 +14,7 @@
 		B94D85251B603B91008A9449 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; };
 		B94D85281B603C02008A9449 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
-		B9847CB11B5EEC44002FEEE7 /* ListsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */; };
+		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
 		B9CD69BC1B583C920072DDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B41B583C920072DDBD /* LaunchScreen.storyboard */; };
@@ -62,7 +62,7 @@
 		B94D851F1B603B64008A9449 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
 		B94D85201B603B64008A9449 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
-		B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListsTableViewController.swift; path = "ToDo/Sources/Classes/View Controllers/ListsTableViewController.swift"; sourceTree = "<group>"; };
+		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodosTableViewController.swift; path = "ToDo/Sources/Classes/View Controllers/TodosTableViewController.swift"; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD69941B583BD30072DDBD /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +129,7 @@
 		B9847CB21B5EEC4F002FEEE7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B9847CB01B5EEC44002FEEE7 /* ListsTableViewController.swift */,
+				B9847CB01B5EEC44002FEEE7 /* ListController.swift */,
 				B9847CB31B5EECA1002FEEE7 /* TodosTableViewController.swift */,
 			);
 			name = "View Controllers";
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
-				B9847CB11B5EEC44002FEEE7 /* ListsTableViewController.swift in Sources */,
+				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodosTableViewController.swift in Sources */,
 				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
