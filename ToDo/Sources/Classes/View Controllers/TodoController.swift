@@ -1,5 +1,5 @@
 //
-//  TodosTableViewController.swift
+//  TodoController.swift
 //  ToDo
 //
 //  Created by Julian Grosshauser on 21/07/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TodosTableViewController: UITableViewController {
+class TodoController: UIViewController {
 
     init() {
-        super.init(style: .Plain)
+        super.init(nibName: nil, bundle: nil)
 
         title = "Todos"
     }
