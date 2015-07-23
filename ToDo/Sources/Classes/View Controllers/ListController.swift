@@ -10,6 +10,8 @@ import UIKit
 
 class ListController: UIViewController {
 
+    private let tableView = UITableView()
+
     init() {
         super.init(nibName: nil, bundle: nil)
 
