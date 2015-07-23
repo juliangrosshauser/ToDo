@@ -10,7 +10,11 @@ import UIKit
 
 class TodoController: UIViewController {
 
+    //MARK: Properties
+
     private let tableView = UITableView()
+
+    //MARK: Initialization
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -21,6 +25,8 @@ class TodoController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    //MARK: UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
