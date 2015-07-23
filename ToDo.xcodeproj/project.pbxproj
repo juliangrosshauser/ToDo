@@ -21,6 +21,7 @@
 		B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD69BA1B583C920072DDBD /* AppDelegate.swift */; };
 		B9CD69C61B583CDB0072DDBD /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD69C41B583CDB0072DDBD /* ToDoTests.swift */; };
 		B9CD69CE1B583CFE0072DDBD /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD69CC1B583CFE0072DDBD /* ToDoUITests.swift */; };
+		B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D613FA1B6184DE001FC7F4 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		B9CD69C41B583CDB0072DDBD /* ToDoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTests.swift; sourceTree = "<group>"; };
 		B9CD69C91B583CFE0072DDBD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9CD69CC1B583CFE0072DDBD /* ToDoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
+		B9D613FA1B6184DE001FC7F4 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = List.swift; path = Classes/Models/List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B94D85291B603CF5008A9449 /* Todo.swift */,
+				B9D613FA1B6184DE001FC7F4 /* List.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -406,6 +409,7 @@
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListsTableViewController.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodosTableViewController.swift in Sources */,
+				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
