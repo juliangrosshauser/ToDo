@@ -13,4 +13,8 @@ class ListViewModel {
     //MARK: Properties
     
     private let realm = try! Realm()
+    
+    var lists: Results<List> {
+        return realm.objects(List)
+    }
 }
