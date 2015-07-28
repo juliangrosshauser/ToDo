@@ -20,6 +20,8 @@ class ListController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         title = "Lists"
