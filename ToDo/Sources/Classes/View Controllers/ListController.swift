@@ -13,6 +13,7 @@ class ListController: UIViewController {
     //MARK: Properties
 
     private let tableView = UITableView()
+    private let viewModel = ListViewModel()
 
     //MARK: Initialization
 
