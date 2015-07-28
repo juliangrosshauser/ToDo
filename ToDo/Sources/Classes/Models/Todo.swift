@@ -11,10 +11,5 @@ import RealmSwift
 
 class Todo: Object {
 
-    dynamic var id = 0
     dynamic var text = ""
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
 }
