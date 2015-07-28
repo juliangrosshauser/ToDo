@@ -14,6 +14,7 @@
 		B94D85251B603B91008A9449 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; };
 		B94D85281B603C02008A9449 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
+		B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoController.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		B94D851F1B603B64008A9449 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
 		B94D85201B603B64008A9449 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
+		B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "View Models/ListViewModel.swift"; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoController.swift"; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,14 @@
 			);
 			name = Models;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		B97485BA1B67CEA3001FCF78 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */,
+			);
+			name = "View Models";
 			sourceTree = "<group>";
 		};
 		B9847CB21B5EEC4F002FEEE7 /* View Controllers */ = {
@@ -190,6 +200,7 @@
 			children = (
 				B9CD69B91B583C920072DDBD /* Application */,
 				B9847CB21B5EEC4F002FEEE7 /* View Controllers */,
+				B97485BA1B67CEA3001FCF78 /* View Models */,
 				B94D852B1B603CF9008A9449 /* Models */,
 			);
 			path = Classes;
@@ -408,6 +419,7 @@
 			files = (
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
+				B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */,
 				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
