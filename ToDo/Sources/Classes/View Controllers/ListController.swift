@@ -38,3 +38,20 @@ class ListController: UIViewController {
         view.addSubview(tableView)
     }
 }
+
+//MARK: UITableViewDataSource
+
+extension ListController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.lists.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+        
+        cell.textLabel?.text = viewModel.lists[indexPath.row].name
+        
+        return cell
+    }
+}
