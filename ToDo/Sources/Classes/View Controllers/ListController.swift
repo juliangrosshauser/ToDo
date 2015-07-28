@@ -20,6 +20,7 @@ class ListController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         title = "Lists"
     }
