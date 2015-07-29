@@ -16,7 +16,13 @@ class TodoController: UIViewController, ListControllerDelegate {
     
     //MARK: ListControllerDelegate
     
-    var list: List?
+    var list: List? {
+        didSet {
+            if let list = list {
+                title = list.name
+            }
+        }
+    }
 
     //MARK: Initialization
 
