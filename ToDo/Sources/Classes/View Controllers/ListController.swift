@@ -14,6 +14,7 @@ class ListController: UIViewController {
 
     private let tableView = UITableView()
     private let viewModel = ListViewModel()
+    weak var delegate: ListControllerDelegate?
     private let cellIdentifier = "listCell"
 
     //MARK: Initialization
