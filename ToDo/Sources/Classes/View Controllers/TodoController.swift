@@ -8,11 +8,15 @@
 
 import UIKit
 
-class TodoController: UIViewController {
+class TodoController: UIViewController, ListControllerDelegate {
 
     //MARK: Properties
 
     private let tableView = UITableView()
+    
+    //MARK: ListControllerDelegate
+    
+    var list: List?
 
     //MARK: Initialization
 
