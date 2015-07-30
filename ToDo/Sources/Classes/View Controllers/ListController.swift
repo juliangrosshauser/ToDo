@@ -64,4 +64,11 @@ extension ListController: UITableViewDataSource {
 
 extension ListController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        delegate?.list = viewModel.lists[indexPath.row]
+        
+        if let detailViewController = delegate as? UIViewController {
+            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        }
+    }
 }
