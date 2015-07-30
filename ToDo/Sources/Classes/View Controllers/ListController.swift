@@ -58,3 +58,9 @@ extension ListController: UITableViewDataSource {
         return cell
     }
 }
+
+//MARK: UITableViewDelegate
+
+extension ListController: UITableViewDelegate {
+    
+}
