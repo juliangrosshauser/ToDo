@@ -13,6 +13,7 @@ class TodoController: UIViewController, ListControllerDelegate {
     //MARK: Properties
 
     private let tableView = UITableView()
+    private let cellIdentifier = "todoCell"
     
     //MARK: ListControllerDelegate
     
