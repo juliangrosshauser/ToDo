@@ -72,3 +72,9 @@ extension ListController: UITableViewDelegate {
         }
     }
 }
+
+//MARK: UISplitViewControllerDelegate
+
+extension ListController: UISplitViewControllerDelegate {
+
+}
