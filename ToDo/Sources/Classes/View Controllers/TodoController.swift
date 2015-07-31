@@ -19,10 +19,12 @@ class TodoController: UIViewController, ListControllerDelegate {
     
     var list: List? {
         didSet {
-            tableView.reloadData()
-            
-            if let list = list {
-                title = list.name
+            if list != oldValue {
+                tableView.reloadData()
+                
+                if let list = list {
+                    title = list.name
+                }
             }
         }
     }
