@@ -29,6 +29,8 @@ class TodoController: UIViewController, ListControllerDelegate {
 
     init() {
         super.init(nibName: nil, bundle: nil)
+        
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         title = "Todos"
     }
