@@ -58,7 +58,46 @@ class ListController: UIViewController {
         addButton.center.x = view.center.x
         addButton.layer.cornerRadius = addButtonSize / 2
 
+        addButton.addTarget(self, action: "addList:", forControlEvents: .TouchUpInside)
+
         view.addSubview(addButton)
+    }
+
+    //MARK: Button Actions
+
+    @objc
+    private func addList(sender: UIButton) {
+        let newListPrompt = UIAlertController(title: "New List", message: "Please enter a list name", preferredStyle: .Alert)
+
+        let addNewListAction = UIAlertAction(title: "Add List", style: .Default) { alert in
+            let newList = List()
+            newList.name = newListPrompt.textFields!.first!.text!
+
+            self.viewModel.addList(newList)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+
+        addNewListAction.enabled = false
+        newListPrompt.addAction(addNewListAction)
+        newListPrompt.addAction(cancelAction)
+
+
+        newListPrompt.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "List Name"
+            textField.addTarget(self, action: "newListNameChanged:", forControlEvents: .EditingChanged)
+        }
+
+        presentViewController(newListPrompt, animated: true, completion: nil)
+    }
+
+    //MARK: Text Field Actions
+
+    @objc
+    private func newListNameChanged(sender: UITextField) {
+        if let newListPrompt = presentedViewController as? UIAlertController {
+            newListPrompt.actions.first!.enabled = newListPrompt.textFields!.first!.text!.characters.count > 0
+        }
     }
 }
 
