@@ -58,6 +58,7 @@ class ListController: UIViewController {
         addButton.center.x = view.center.x
         addButton.layer.cornerRadius = addButtonSize / 2
 
+        addButton.addTarget(self, action: "transformButton:", forControlEvents: .TouchDown)
         addButton.addTarget(self, action: "addList:", forControlEvents: .TouchUpInside)
 
         view.addSubview(addButton)
@@ -67,6 +68,8 @@ class ListController: UIViewController {
 
     @objc
     private func addList(sender: UIButton) {
+        resetTransformOfButton(sender)
+        
         let newListPrompt = UIAlertController(title: "New List", message: "Please enter a list name", preferredStyle: .Alert)
 
         let addNewListAction = UIAlertAction(title: "Add List", style: .Default) { alert in
@@ -98,6 +101,21 @@ class ListController: UIViewController {
         if let newListPrompt = presentedViewController as? UIAlertController {
             newListPrompt.actions.first!.enabled = newListPrompt.textFields!.first!.text!.characters.count > 0
         }
+    }
+
+    //MARK: Button Transform
+
+    @objc
+    private func transformButton(button: UIButton) {
+        UIView.animateWithDuration(0.1) {
+            button.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1.0)
+        }
+    }
+
+    private func resetTransformOfButton(button: UIButton) {
+        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1.0, options: .CurveEaseInOut, animations: {
+            button.layer.transform = CATransform3DIdentity
+        }, completion: nil)
     }
 }
 
