@@ -17,6 +17,17 @@ class ListController: UIViewController {
     weak var delegate: ListControllerDelegate?
     private let cellIdentifier = "listCell"
 
+    private let addButton: UIButton = {
+        let addButton = UIButton(type: .Custom)
+
+        addButton.setImage(UIImage(named: "Plus"), forState: .Normal)
+        addButton.setImage(UIImage(named: "Plus"), forState: .Highlighted)
+        addButton.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin]
+        addButton.backgroundColor = UIColor(red:0.14, green:0.82, blue:0.99, alpha:1)
+
+        return addButton
+    }()
+
     //MARK: Initialization
 
     init() {
