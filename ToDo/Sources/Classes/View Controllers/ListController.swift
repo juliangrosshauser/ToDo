@@ -51,6 +51,14 @@ class ListController: UIViewController {
 
         tableView.frame = view.bounds
         view.addSubview(tableView)
+
+        let addButtonSize: CGFloat = 100
+
+        addButton.frame = CGRect(x: 0, y: view.bounds.size.height - addButtonSize - 30, width: addButtonSize, height: addButtonSize)
+        addButton.center.x = view.center.x
+        addButton.layer.cornerRadius = addButtonSize / 2
+
+        view.addSubview(addButton)
     }
 }
 
