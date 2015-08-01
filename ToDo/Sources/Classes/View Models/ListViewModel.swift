@@ -17,4 +17,12 @@ class ListViewModel {
     var lists: Results<List> {
         return realm.objects(List)
     }
+
+    //MARK: Add List
+
+    func addList(list: List) {
+        realm.write {
+            self.realm.add(list)
+        }
+    }
 }
