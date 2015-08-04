@@ -13,6 +13,7 @@ class ListViewModel {
     //MARK: Properties
     
     private let realm = try! Realm()
+    private var realmNotificationToken = NotificationToken()
     
     var lists: Results<List> {
         return realm.objects(List)
