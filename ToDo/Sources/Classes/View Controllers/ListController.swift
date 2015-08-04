@@ -38,6 +38,10 @@ class ListController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         title = "Lists"
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(ListViewModel.listsChangedNotification, object: viewModel, queue: NSOperationQueue.mainQueue()) { _ in
+            self.tableView.reloadData()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
