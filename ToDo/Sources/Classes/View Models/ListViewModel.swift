@@ -14,6 +14,7 @@ class ListViewModel {
     
     private let realm = try! Realm()
     private var realmNotificationToken = NotificationToken()
+    static let listsChangedNotification = "ListsChangedNotification"
     
     var lists: Results<List> {
         return realm.objects(List)
