@@ -17,6 +17,8 @@ class ListViewModel {
     private var realmNotificationToken = NotificationToken()
     static let listsChangedNotification = "ListsChangedNotification"
     
+    //MARK: Initialization
+    
     init() {
         realmNotificationToken = realm.addNotificationBlock { notification, realm in
             NSNotificationCenter.defaultCenter().postNotificationName(ListViewModel.listsChangedNotification, object: self)
