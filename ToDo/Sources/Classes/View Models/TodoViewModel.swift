@@ -13,6 +13,7 @@ class TodoViewModel {
     //MARK: Properties
     
     private let realm = try! Realm()
+    private var realmNotificationToken = NotificationToken()
     
     //MARK: Add Todo
     
