@@ -17,6 +17,14 @@ class TodoViewModel {
     private var realmNotificationToken = NotificationToken()
     static let todosChangedNotification = "TodosChangedNotification"
     
+    //MARK: Initialization
+    
+    init() {
+        realmNotificationToken = realm.addNotificationBlock { notification, realm in
+            NSNotificationCenter.defaultCenter().postNotificationName(TodoViewModel.todosChangedNotification, object: self)
+        }
+    }
+    
     //MARK: Add Todo
     
     func addTodo(todo: Todo, toList list: List) {
