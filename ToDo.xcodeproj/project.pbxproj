@@ -15,6 +15,7 @@
 		B94D85281B603C02008A9449 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
 		B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */; };
+		B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975406C1B72B554002AA59E /* TodoViewModel.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoController.swift */; };
 		B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */; };
@@ -65,6 +66,7 @@
 		B94D85201B603B64008A9449 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
 		B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "View Models/ListViewModel.swift"; sourceTree = "<group>"; };
+		B975406C1B72B554002AA59E /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoViewModel.swift; path = "View Models/TodoViewModel.swift"; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoController.swift"; sourceTree = "<group>"; };
 		B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListControllerDelegate.swift; path = Protocols/ListControllerDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */,
+				B975406C1B72B554002AA59E /* TodoViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */,
 				B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */,
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
