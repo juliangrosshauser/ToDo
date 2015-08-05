@@ -14,6 +14,7 @@ class TodoController: UIViewController, ListControllerDelegate {
 
     private let tableView = UITableView()
     private let cellIdentifier = "todoCell"
+    private let viewModel = TodoViewModel()
     
     private let addButton: UIButton = {
         let addButton = UIButton(type: .Custom)
