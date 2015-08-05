@@ -70,6 +70,7 @@ class TodoController: UIViewController, ListControllerDelegate {
         addButton.center.x = view.center.x
         addButton.layer.cornerRadius = addButtonSize / 2
         
+        addButton.addTarget(self, action: "transformButton:", forControlEvents: .TouchDown)
         addButton.addTarget(self, action: "addTodo:", forControlEvents: .TouchUpInside)
         
         view.addSubview(addButton)
@@ -79,6 +80,8 @@ class TodoController: UIViewController, ListControllerDelegate {
     
     @objc
     private func addTodo(sender: UIButton) {
+        resetTransformOfButton(sender)
+        
         let newTodoPrompt = UIAlertController(title: "New Todo", message: "Please enter a todo", preferredStyle: .Alert)
         
         let addNewTodoAction = UIAlertAction(title: "Add Todo", style: .Default) { alert in
@@ -110,6 +113,21 @@ class TodoController: UIViewController, ListControllerDelegate {
         if let newTodoPrompt = presentedViewController as? UIAlertController {
             newTodoPrompt.actions.first!.enabled = newTodoPrompt.textFields!.first!.text!.characters.count > 0
         }
+    }
+    
+    //MARK: Button Transform
+    
+    @objc
+    private func transformButton(button: UIButton) {
+        UIView.animateWithDuration(0.1) {
+            button.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1.0)
+        }
+    }
+    
+    private func resetTransformOfButton(button: UIButton) {
+        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1.0, options: .CurveEaseInOut, animations: {
+            button.layer.transform = CATransform3DIdentity
+        }, completion: nil)
     }
 }
 
