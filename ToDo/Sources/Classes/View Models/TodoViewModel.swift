@@ -6,6 +6,7 @@
 //  Copyright © 2015 Julian Grosshauser. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 class TodoViewModel {
