@@ -50,6 +50,10 @@ class TodoController: UIViewController, ListControllerDelegate {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         title = "Todos"
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(TodoViewModel.todosChangedNotification, object: viewModel, queue: NSOperationQueue.mainQueue()) { _ in
+            self.tableView.reloadData()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
