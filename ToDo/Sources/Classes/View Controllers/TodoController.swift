@@ -70,7 +70,46 @@ class TodoController: UIViewController, ListControllerDelegate {
         addButton.center.x = view.center.x
         addButton.layer.cornerRadius = addButtonSize / 2
         
+        addButton.addTarget(self, action: "addTodo:", forControlEvents: .TouchUpInside)
+        
         view.addSubview(addButton)
+    }
+    
+    //MARK: Button Actions
+    
+    @objc
+    private func addTodo(sender: UIButton) {
+        let newTodoPrompt = UIAlertController(title: "New Todo", message: "Please enter a todo", preferredStyle: .Alert)
+        
+        let addNewTodoAction = UIAlertAction(title: "Add Todo", style: .Default) { alert in
+            let newTodo = Todo()
+            newTodo.text = newTodoPrompt.textFields!.first!.text!
+            
+            self.viewModel.addTodo(newTodo, toList: self.list!)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        addNewTodoAction.enabled = false
+        newTodoPrompt.addAction(addNewTodoAction)
+        newTodoPrompt.addAction(cancelAction)
+        
+        
+        newTodoPrompt.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Todo"
+            textField.addTarget(self, action: "newTodoChanged:", forControlEvents: .EditingChanged)
+        }
+        
+        presentViewController(newTodoPrompt, animated: true, completion: nil)
+    }
+    
+    //MARK: Text Field Actions
+    
+    @objc
+    private func newTodoChanged(sender: UITextField) {
+        if let newTodoPrompt = presentedViewController as? UIAlertController {
+            newTodoPrompt.actions.first!.enabled = newTodoPrompt.textFields!.first!.text!.characters.count > 0
+        }
     }
 }
 
