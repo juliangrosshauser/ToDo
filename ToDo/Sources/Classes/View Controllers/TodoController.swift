@@ -73,6 +73,13 @@ class TodoController: UIViewController, ListControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if list == nil {
+            if let splitViewController = splitViewController where splitViewController.displayMode == .PrimaryHidden  {
+                splitViewController.preferredDisplayMode = .PrimaryOverlay
+                splitViewController.preferredDisplayMode = .Automatic
+            }
+        }
 
         tableView.frame = view.bounds
         view.addSubview(tableView)
