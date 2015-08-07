@@ -136,6 +136,10 @@ extension ListController: UITableViewDataSource {
         
         cell.textLabel?.text = viewModel.lists[indexPath.row].name
         
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = UIColor(red:0.14, green:0.82, blue:0.99, alpha:0.3)
+        cell.selectedBackgroundView = selectedBackgroundView
+        
         return cell
     }
 }
