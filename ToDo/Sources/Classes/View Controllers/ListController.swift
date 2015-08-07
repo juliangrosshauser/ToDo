@@ -149,6 +149,7 @@ extension ListController: UITableViewDataSource {
 extension ListController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         delegate?.list = viewModel.lists[indexPath.row]
         
         if let splitViewController = splitViewController, detailViewController = delegate as? UIViewController {
