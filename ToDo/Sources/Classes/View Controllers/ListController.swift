@@ -150,6 +150,11 @@ extension ListController: UITableViewDelegate {
         if let splitViewController = splitViewController, detailViewController = delegate as? UIViewController {
             if splitViewController.collapsed {
                 splitViewController.showDetailViewController(detailViewController, sender: nil)
+            } else {
+                if splitViewController.displayMode == .PrimaryOverlay {
+                    splitViewController.preferredDisplayMode = .PrimaryHidden
+                    splitViewController.preferredDisplayMode = .Automatic
+                }
             }
         }
     }
