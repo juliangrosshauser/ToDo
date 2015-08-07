@@ -152,7 +152,10 @@ extension ListController: UITableViewDelegate {
                 splitViewController.showDetailViewController(detailViewController, sender: nil)
             } else {
                 if splitViewController.displayMode == .PrimaryOverlay {
-                    splitViewController.preferredDisplayMode = .PrimaryHidden
+                    UIView.animateWithDuration(0.3) {
+                        splitViewController.preferredDisplayMode = .PrimaryHidden
+                    }
+                    
                     splitViewController.preferredDisplayMode = .Automatic
                 }
             }
