@@ -37,6 +37,14 @@ class TodoController: UIViewController, ListControllerDelegate {
                 
                 if let list = list {
                     title = list.name
+                    
+                    if (!addButton.enabled) {
+                        addButton.enabled = true
+                    }
+                } else {
+                    if (addButton.enabled) {
+                        addButton.enabled = false
+                    }
                 }
             }
         }
