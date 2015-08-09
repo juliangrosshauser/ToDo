@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/RLMArray.h</key>
 		<data>
-		7RgA8G4SPVjJ5WnXD5UsUHMxdOw=
+		BtVIG9ZdL8t99CQjU3dpAIJO/zc=
 		</data>
 		<key>Headers/RLMCollection.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Headers/RLMDefines.h</key>
 		<data>
-		FQtQmkoON+64ksopcJs6CQpLuUU=
+		gwSvR00adDGNY+NyMMLYx36Ym0c=
 		</data>
 		<key>Headers/RLMMigration.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Headers/RLMObject.h</key>
 		<data>
-		rGorscy9nJPtSKeLfKINz5MpLuM=
+		80YxU1FZHiXNBgPirWERc3Deq+E=
 		</data>
 		<key>Headers/RLMObjectBase.h</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		cyj8OPuHeA8DfK/rl4SZPEgqmdM=
+		8t9kqwiQYEiZepNPGiolaLifupE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -125,7 +125,7 @@
 	<dict>
 		<key>Headers/RLMArray.h</key>
 		<data>
-		7RgA8G4SPVjJ5WnXD5UsUHMxdOw=
+		BtVIG9ZdL8t99CQjU3dpAIJO/zc=
 		</data>
 		<key>Headers/RLMCollection.h</key>
 		<data>
@@ -137,7 +137,7 @@
 		</data>
 		<key>Headers/RLMDefines.h</key>
 		<data>
-		FQtQmkoON+64ksopcJs6CQpLuUU=
+		gwSvR00adDGNY+NyMMLYx36Ym0c=
 		</data>
 		<key>Headers/RLMMigration.h</key>
 		<data>
@@ -145,7 +145,7 @@
 		</data>
 		<key>Headers/RLMObject.h</key>
 		<data>
-		rGorscy9nJPtSKeLfKINz5MpLuM=
+		80YxU1FZHiXNBgPirWERc3Deq+E=
 		</data>
 		<key>Headers/RLMObjectBase.h</key>
 		<data>

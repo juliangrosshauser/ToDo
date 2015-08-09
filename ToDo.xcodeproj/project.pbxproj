@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */; };
 		B9354F021B5DA03200F6A320 /* ToDo.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B9354F011B5DA03200F6A320 /* ToDo.entitlements */; };
-		B94D85231B603B91008A9449 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94D851F1B603B64008A9449 /* Realm.framework */; };
-		B94D85241B603B91008A9449 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B94D851F1B603B64008A9449 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B94D85251B603B91008A9449 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; };
-		B94D85281B603C02008A9449 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B94D85201B603B64008A9449 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
 		B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */; };
 		B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975406C1B72B554002AA59E /* TodoViewModel.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoController.swift */; };
+		B99670A11B77FF3D0054B7A2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99670921B77FE4D0054B7A2 /* RealmSwift.framework */; };
+		B99670A21B77FF3D0054B7A2 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B99670921B77FE4D0054B7A2 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B99670A31B77FF470054B7A2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99670911B77FE4D0054B7A2 /* Realm.framework */; };
+		B99670A41B77FF470054B7A2 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B99670911B77FE4D0054B7A2 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
 		B9CD69BC1B583C920072DDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B41B583C920072DDBD /* LaunchScreen.storyboard */; };
@@ -51,8 +51,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B94D85281B603C02008A9449 /* RealmSwift.framework in Embed Frameworks */,
-				B94D85241B603B91008A9449 /* Realm.framework in Embed Frameworks */,
+				B99670A41B77FF470054B7A2 /* Realm.framework in Embed Frameworks */,
+				B99670A21B77FF3D0054B7A2 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,13 +62,13 @@
 /* Begin PBXFileReference section */
 		B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9354F011B5DA03200F6A320 /* ToDo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToDo.entitlements; sourceTree = "<group>"; };
-		B94D851F1B603B64008A9449 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
-		B94D85201B603B64008A9449 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
 		B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "View Models/ListViewModel.swift"; sourceTree = "<group>"; };
 		B975406C1B72B554002AA59E /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoViewModel.swift; path = "View Models/TodoViewModel.swift"; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoController.swift"; sourceTree = "<group>"; };
+		B99670911B77FE4D0054B7A2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
+		B99670921B77FE4D0054B7A2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListControllerDelegate.swift; path = Protocols/ListControllerDelegate.swift; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD69941B583BD30072DDBD /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +90,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */,
-				B94D85231B603B91008A9449 /* Realm.framework in Frameworks */,
-				B94D85251B603B91008A9449 /* RealmSwift.framework in Frameworks */,
+				B99670A31B77FF470054B7A2 /* Realm.framework in Frameworks */,
+				B99670A11B77FF3D0054B7A2 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */,
-				B94D851F1B603B64008A9449 /* Realm.framework */,
-				B94D85201B603B64008A9449 /* RealmSwift.framework */,
+				B99670911B77FE4D0054B7A2 /* Realm.framework */,
+				B99670921B77FE4D0054B7A2 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
