@@ -32,8 +32,12 @@ class ListViewModel {
     //MARK: Add List
 
     func addList(list: List) {
-        realm.write {
-            self.realm.add(list)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+            let realm = try! Realm()
+
+            realm.write {
+                realm.add(list)
+            }
         }
     }
 }
