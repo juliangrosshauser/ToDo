@@ -77,10 +77,7 @@ class ListController: UIViewController {
         let newListPrompt = UIAlertController(title: "New List", message: "Please enter a list name", preferredStyle: .Alert)
 
         let addNewListAction = UIAlertAction(title: "Add List", style: .Default) { alert in
-            let newList = List()
-            newList.name = newListPrompt.textFields!.first!.text!
-
-            self.viewModel.addList(newList)
+            self.viewModel.addListWithName(newListPrompt.textFields!.first!.text!)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)

@@ -31,9 +31,13 @@ class ListViewModel {
 
     //MARK: Add List
 
-    func addList(list: List) {
+    func addListWithName(name: String) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
             let realm = try! Realm()
+
+            let list = List()
+            list.id = NSUUID().UUIDString
+            list.name = name
 
             realm.write {
                 realm.add(list)
