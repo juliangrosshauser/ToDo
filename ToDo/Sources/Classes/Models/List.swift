@@ -11,6 +11,11 @@ import RealmSwift
 
 class List: Object {
 
+    dynamic var id = ""
     dynamic var name = ""
     let todos = RealmSwift.List<Todo>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
