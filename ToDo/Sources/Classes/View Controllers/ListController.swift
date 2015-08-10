@@ -23,7 +23,7 @@ class ListController: UIViewController {
         addButton.setImage(UIImage(named: "Plus"), forState: .Normal)
         addButton.setImage(UIImage(named: "Plus"), forState: .Highlighted)
         addButton.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin]
-        addButton.backgroundColor = UIColor(red:0.14, green:0.82, blue:0.99, alpha:1)
+        addButton.backgroundColor = Color.lightBlue
 
         return addButton
     }()
@@ -134,7 +134,7 @@ extension ListController: UITableViewDataSource {
         cell.textLabel?.text = viewModel.lists[indexPath.row].name
         
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor(red:0.14, green:0.82, blue:0.99, alpha:0.3)
+        selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
         cell.selectedBackgroundView = selectedBackgroundView
         
         return cell

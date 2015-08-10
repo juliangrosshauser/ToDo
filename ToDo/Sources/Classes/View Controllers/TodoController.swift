@@ -22,7 +22,7 @@ class TodoController: UIViewController, ListControllerDelegate {
         addButton.setImage(UIImage(named: "Plus"), forState: .Normal)
         addButton.setImage(UIImage(named: "Plus"), forState: .Highlighted)
         addButton.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin]
-        addButton.backgroundColor = UIColor(red:0.14, green:0.82, blue:0.99, alpha:1)
+        addButton.backgroundColor = Color.lightBlue
         addButton.enabled = false
         
         return addButton
