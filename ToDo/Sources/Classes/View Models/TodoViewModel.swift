@@ -27,9 +27,15 @@ class TodoViewModel {
     
     //MARK: Add Todo
     
-    func addTodo(todo: Todo, toList list: List) {
-        realm.write {
-            list.todos.append(todo)
+    func addTodoWithText(text: String, toListWithPrimaryKey primaryKey: String) {
+        let todo = Todo()
+        todo.id = NSUUID().UUIDString
+        todo.text = text
+
+        if let list = realm.objects(List).filter("id == %@", primaryKey).first {
+            realm.write {
+                list.todos.append(todo)
+            }
         }
     }
 }

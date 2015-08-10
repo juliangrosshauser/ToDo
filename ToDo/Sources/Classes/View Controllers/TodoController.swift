@@ -105,10 +105,7 @@ class TodoController: UIViewController, ListControllerDelegate {
         let newTodoPrompt = UIAlertController(title: "New Todo", message: "Please enter a todo", preferredStyle: .Alert)
         
         let addNewTodoAction = UIAlertAction(title: "Add Todo", style: .Default) { alert in
-            let newTodo = Todo()
-            newTodo.text = newTodoPrompt.textFields!.first!.text!
-            
-            self.viewModel.addTodo(newTodo, toList: self.list!)
+            self.viewModel.addTodoWithText(newTodoPrompt.textFields!.first!.text!, toListWithPrimaryKey: self.list!.id)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
