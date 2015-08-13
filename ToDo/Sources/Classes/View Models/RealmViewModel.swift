@@ -24,4 +24,10 @@ class RealmViewModel {
             NSNotificationCenter.defaultCenter().postNotificationName(RealmViewModel.modelChangedNotification, object: self)
         }
     }
+
+    //MARK: Get Objects
+
+    func objects<T: Object>(type: T.Type) -> Results<T> {
+        return realm.objects(type)
+    }
 }
