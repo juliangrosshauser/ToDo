@@ -14,7 +14,7 @@ class RealmViewModel {
     //MARK: Properties
 
     private let realm = try! Realm()
-    private var realmNotificationToken = NotificationToken()
+    private var realmNotificationToken: NotificationToken?
     static let modelChangedNotification = "ModelChangedNotification"
 
     //MARK: Initialization
