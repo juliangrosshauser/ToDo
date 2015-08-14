@@ -13,7 +13,7 @@ class Todo: Object {
 
     //MARK: Properties
 
-    dynamic var id = ""
+    dynamic var id = NSUUID().UUIDString
     dynamic var text = ""
 
     //MARK: Initialization
@@ -21,7 +21,6 @@ class Todo: Object {
     convenience init(text: String) {
         self.init()
 
-        id = NSUUID().UUIDString
         self.text = text
     }
 

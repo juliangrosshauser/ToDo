@@ -13,7 +13,7 @@ class List: Object {
 
     //MARK: Properties
 
-    dynamic var id = ""
+    dynamic var id = NSUUID().UUIDString
     dynamic var name = ""
     let todos = RealmSwift.List<Todo>()
 
@@ -22,7 +22,6 @@ class List: Object {
     convenience init(name: String) {
         self.init()
 
-        id = NSUUID().UUIDString
         self.name = name
     }
 
