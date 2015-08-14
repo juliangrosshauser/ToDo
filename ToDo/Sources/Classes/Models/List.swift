@@ -11,9 +11,13 @@ import RealmSwift
 
 class List: Object {
 
+    //MARK: Properties
+
     dynamic var id = ""
     dynamic var name = ""
     let todos = RealmSwift.List<Todo>()
+
+    //MARK: Initialization
 
     convenience init(name: String) {
         self.init()
@@ -21,6 +25,8 @@ class List: Object {
         id = NSUUID().UUIDString
         self.name = name
     }
+
+    //MARK: Object
 
     override static func primaryKey() -> String? {
         return "id"
