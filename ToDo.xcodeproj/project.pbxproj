@@ -10,6 +10,7 @@
 		B9354EFF1B5D9EC600F6A320 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */; };
 		B9354F021B5DA03200F6A320 /* ToDo.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B9354F011B5DA03200F6A320 /* ToDo.entitlements */; };
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
+		B955A7231B7E720600F13462 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955A7221B7E720600F13462 /* BaseObject.swift */; };
 		B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */; };
 		B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975406C1B72B554002AA59E /* TodoViewModel.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
@@ -65,6 +66,7 @@
 		B9354EFE1B5D9EC600F6A320 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B9354F011B5DA03200F6A320 /* ToDo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToDo.entitlements; sourceTree = "<group>"; };
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
+		B955A7221B7E720600F13462 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseObject.swift; path = Classes/Models/BaseObject.swift; sourceTree = "<group>"; };
 		B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "View Models/ListViewModel.swift"; sourceTree = "<group>"; };
 		B975406C1B72B554002AA59E /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoViewModel.swift; path = "View Models/TodoViewModel.swift"; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		B94D852B1B603CF9008A9449 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B955A7221B7E720600F13462 /* BaseObject.swift */,
 				B94D85291B603CF5008A9449 /* Todo.swift */,
 				B9D613FA1B6184DE001FC7F4 /* List.swift */,
 			);
@@ -453,6 +456,7 @@
 				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
 				B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */,
+				B955A7231B7E720600F13462 /* BaseObject.swift in Sources */,
 				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
 				B9903B451B79564E001698A1 /* Color.swift in Sources */,

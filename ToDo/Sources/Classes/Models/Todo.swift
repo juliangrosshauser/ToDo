@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import RealmSwift
 
-class Todo: Object {
+class Todo: BaseObject {
 
     //MARK: Properties
 
-    dynamic var id = NSUUID().UUIDString
     dynamic var text = ""
 
     //MARK: Initialization
@@ -22,11 +20,5 @@ class Todo: Object {
         self.init()
 
         self.text = text
-    }
-
-    //MARK: Object
-
-    override static func primaryKey() -> String? {
-        return "id"
     }
 }

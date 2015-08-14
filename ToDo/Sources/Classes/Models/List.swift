@@ -9,11 +9,10 @@
 import Foundation
 import RealmSwift
 
-class List: Object {
+class List: BaseObject {
 
     //MARK: Properties
 
-    dynamic var id = NSUUID().UUIDString
     dynamic var name = ""
     let todos = RealmSwift.List<Todo>()
 
@@ -23,11 +22,5 @@ class List: Object {
         self.init()
 
         self.name = name
-    }
-
-    //MARK: Object
-
-    override static func primaryKey() -> String? {
-        return "id"
     }
 }
