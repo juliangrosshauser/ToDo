@@ -14,6 +14,13 @@ class Todo: Object {
     dynamic var id = ""
     dynamic var text = ""
 
+    convenience init(text: String) {
+        self.init()
+
+        id = NSUUID().UUIDString
+        self.text = text
+    }
+
     override static func primaryKey() -> String? {
         return "id"
     }
