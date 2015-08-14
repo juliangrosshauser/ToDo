@@ -30,4 +30,19 @@ class RealmViewModel {
     func objects<T: Object>(type: T.Type) -> Results<T> {
         return realm.objects(type)
     }
+
+    //MARK: Add List
+
+    func addList(name: String) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+            let realm = try! Realm()
+
+            let list = List()
+            list.name = name
+
+            realm.write {
+                realm.add(list)
+            }
+        }
+    }
 }
