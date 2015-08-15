@@ -48,14 +48,16 @@ class RealmViewModel {
 
     //MARK: Append Todo To List
 
-    func appendTodo(text: String, listPrimaryKey: String) {
+    func appendTodo(text: String, list: List) {
+        let primaryKey = list.id
+
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
             let realm = try! Realm()
 
             let todo = Todo()
             todo.text = text
 
-            if let list = realm.objects(List).filter("id == %@", listPrimaryKey).first {
+            if let list = realm.objects(List).filter("id == %@", primaryKey).first {
                 realm.write {
                     list.todos.append(todo)
                 }
