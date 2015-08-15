@@ -84,7 +84,7 @@ extension TodoTableController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! TableViewCell
         
         cell.textLabel?.text = list!.todos[indexPath.row].text
         

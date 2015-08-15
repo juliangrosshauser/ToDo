@@ -26,7 +26,7 @@ class BaseTableController: UITableViewController {
 
         title = "\(itemType)s"
         addButton.target = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         NSNotificationCenter.defaultCenter().addObserverForName(Store.modelChangedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.reloadData()
