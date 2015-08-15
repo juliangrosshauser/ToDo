@@ -13,7 +13,7 @@ class ListController: UIViewController {
     //MARK: Properties
 
     private let tableView = UITableView()
-    private let viewModel = ListViewModel()
+    private let store = Store()
     weak var delegate: ListControllerDelegate?
     private let cellIdentifier = "listCell"
 
@@ -39,7 +39,7 @@ class ListController: UIViewController {
 
         title = "Lists"
         
-        NSNotificationCenter.defaultCenter().addObserverForName(ListViewModel.listsChangedNotification, object: viewModel, queue: NSOperationQueue.mainQueue()) { _ in
+        NSNotificationCenter.defaultCenter().addObserverForName(Store.modelChangedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.reloadData()
         }
     }
@@ -77,7 +77,7 @@ class ListController: UIViewController {
         let newListPrompt = UIAlertController(title: "New List", message: "Please enter a list name", preferredStyle: .Alert)
 
         let addNewListAction = UIAlertAction(title: "Add List", style: .Default) { alert in
-            self.viewModel.addListWithName(newListPrompt.textFields!.first!.text!)
+            self.store.addList(newListPrompt.textFields!.first!.text!)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -125,13 +125,13 @@ class ListController: UIViewController {
 extension ListController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.lists.count
+        return store.objects(List).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
         
-        cell.textLabel?.text = viewModel.lists[indexPath.row].name
+        cell.textLabel?.text = store.objects(List)[indexPath.row].name
         
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
@@ -147,7 +147,7 @@ extension ListController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        delegate?.list = viewModel.lists[indexPath.row]
+        delegate?.list = store.objects(List)[indexPath.row]
         
         if let splitViewController = splitViewController, detailViewController = delegate as? UIViewController {
             if splitViewController.collapsed {

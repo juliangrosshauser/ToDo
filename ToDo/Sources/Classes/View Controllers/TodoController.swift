@@ -14,7 +14,7 @@ class TodoController: UIViewController, ListControllerDelegate {
 
     private let tableView = UITableView()
     private let cellIdentifier = "todoCell"
-    private let viewModel = TodoViewModel()
+    private let store = Store()
     
     private let addButton: UIButton = {
         let addButton = UIButton(type: .Custom)
@@ -60,7 +60,7 @@ class TodoController: UIViewController, ListControllerDelegate {
 
         title = "Todos"
         
-        NSNotificationCenter.defaultCenter().addObserverForName(TodoViewModel.todosChangedNotification, object: viewModel, queue: NSOperationQueue.mainQueue()) { _ in
+        NSNotificationCenter.defaultCenter().addObserverForName(Store.modelChangedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.reloadData()
         }
     }
@@ -105,7 +105,7 @@ class TodoController: UIViewController, ListControllerDelegate {
         let newTodoPrompt = UIAlertController(title: "New Todo", message: "Please enter a todo", preferredStyle: .Alert)
         
         let addNewTodoAction = UIAlertAction(title: "Add Todo", style: .Default) { alert in
-            self.viewModel.addTodoWithText(newTodoPrompt.textFields!.first!.text!, toListWithPrimaryKey: self.list!.id)
+            self.store.appendTodo(newTodoPrompt.textFields!.first!.text!, list: self.list!)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
