@@ -46,7 +46,7 @@ extension ListTableController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
         cell.textLabel?.text = store.objects(List)[indexPath.row].name
 

@@ -13,7 +13,6 @@ class BaseTableController: UITableViewController {
     //MARK: Properties
 
     let store = Store()
-    let cellIdentifier = "cellIdentifier"
     let itemType: TableItemType
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: "addItemAction:")
 
@@ -26,7 +25,7 @@ class BaseTableController: UITableViewController {
 
         title = "\(itemType)s"
         addButton.target = self
-        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
         NSNotificationCenter.defaultCenter().addObserverForName(Store.modelChangedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.reloadData()
