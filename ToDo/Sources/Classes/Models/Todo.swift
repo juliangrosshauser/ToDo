@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Todo: BaseObject {
+class Todo: BaseObject, CustomStringConvertible {
 
     //MARK: Properties
 
@@ -20,5 +20,11 @@ class Todo: BaseObject {
         self.init()
 
         self.text = text
+    }
+
+    //MARK: CustomStringConvertible
+
+    override var description: String {
+        return text
     }
 }

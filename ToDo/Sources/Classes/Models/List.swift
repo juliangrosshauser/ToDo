@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class List: BaseObject {
+class List: BaseObject, CustomStringConvertible {
 
     //MARK: Properties
 
@@ -22,5 +22,11 @@ class List: BaseObject {
         self.init()
 
         self.name = name
+    }
+
+    //MARK: CustomStringConvertible
+
+    override var description: String {
+        return name
     }
 }
