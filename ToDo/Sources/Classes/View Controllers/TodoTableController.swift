@@ -24,6 +24,8 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
                         addButton.enabled = true
                     }
                 } else {
+                    title = "\(itemType)s"
+                    
                     if (addButton.enabled) {
                         addButton.enabled = false
                     }
