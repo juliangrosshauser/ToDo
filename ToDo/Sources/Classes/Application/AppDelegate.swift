@@ -18,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let todoController = TodoController()
-        listController.delegate = todoController
         let listTableController = ListTableController()
-        listTableController.delegate = todoController
+        let todoTableController = TodoTableController()
+        listTableController.delegate = todoTableController
         
-        let detailViewController = UINavigationController(rootViewController: todoController)
         let masterViewController = UINavigationController(rootViewController: listTableController)
+        let detailViewController = UINavigationController(rootViewController: todoTableController)
         
         let splitViewController = UISplitViewController()
         splitViewController.viewControllers = [masterViewController, detailViewController]

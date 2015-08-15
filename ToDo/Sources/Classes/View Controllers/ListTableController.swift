@@ -87,7 +87,7 @@ extension ListTableController: UISplitViewControllerDelegate {
 
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
         // if detail view controller contains a `TodoTableController` and it's `list` property isn't set, show master view controller first, because the `TodoTableController` doesn't yet know what todos to show
-        if let navigationController = secondaryViewController as? UINavigationController, todoController = navigationController.topViewController as? TodoController where todoController.list == nil {
+        if let navigationController = secondaryViewController as? UINavigationController, todoTableController = navigationController.topViewController as? TodoTableController where todoTableController.list == nil {
             return true
         }
 
