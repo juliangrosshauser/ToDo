@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class RealmViewModel {
+class Store {
 
     //MARK: Properties
 
@@ -21,7 +21,7 @@ class RealmViewModel {
 
     init() {
         realmNotificationToken = realm.addNotificationBlock { notification, realm in
-            NSNotificationCenter.defaultCenter().postNotificationName(RealmViewModel.modelChangedNotification, object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName(Store.modelChangedNotification, object: self)
         }
     }
 
