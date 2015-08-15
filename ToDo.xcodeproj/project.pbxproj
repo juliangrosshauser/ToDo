@@ -19,6 +19,7 @@
 		B99670A31B77FF470054B7A2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99670911B77FE4D0054B7A2 /* Realm.framework */; };
 		B99670A41B77FF470054B7A2 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B99670911B77FE4D0054B7A2 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */; };
+		B9C4183B1B7FE02D0050D6F5 /* TableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4183A1B7FE02D0050D6F5 /* TableItemType.swift */; };
 		B9C4183E1B7FE5440050D6F5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4183D1B7FE5440050D6F5 /* Store.swift */; };
 		B9CD69BB1B583C920072DDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B31B583C920072DDBD /* Assets.xcassets */; };
 		B9CD69BC1B583C920072DDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD69B41B583C920072DDBD /* LaunchScreen.storyboard */; };
@@ -71,6 +72,7 @@
 		B99670911B77FE4D0054B7A2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
 		B99670921B77FE4D0054B7A2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListControllerDelegate.swift; path = Protocols/ListControllerDelegate.swift; sourceTree = "<group>"; };
+		B9C4183A1B7FE02D0050D6F5 /* TableItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableItemType.swift; path = Enumerations/TableItemType.swift; sourceTree = "<group>"; };
 		B9C4183D1B7FE5440050D6F5 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Classes/Models/Store.swift; sourceTree = "<group>"; };
 		B9CD69801B583BD30072DDBD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CD69941B583BD30072DDBD /* ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,14 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		B9C4183C1B7FE0320050D6F5 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				B9C4183A1B7FE02D0050D6F5 /* TableItemType.swift */,
+			);
+			name = Enumerations;
+			sourceTree = "<group>";
+		};
 		B9CD69771B583BD30072DDBD = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 				B9CD69B81B583C920072DDBD /* Classes */,
 				B9B457011B692355000F0777 /* Protocols */,
 				B9903B461B795686001698A1 /* Structs */,
+				B9C4183C1B7FE0320050D6F5 /* Enumerations */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -440,6 +451,7 @@
 				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */,
 				B9C4183E1B7FE5440050D6F5 /* Store.swift in Sources */,
+				B9C4183B1B7FE02D0050D6F5 /* TableItemType.swift in Sources */,
 				B955A7231B7E720600F13462 /* BaseObject.swift in Sources */,
 				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
