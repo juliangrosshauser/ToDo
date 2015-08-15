@@ -12,8 +12,6 @@
 		B94D852A1B603CF5008A9449 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94D85291B603CF5008A9449 /* Todo.swift */; };
 		B955A7231B7E720600F13462 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B955A7221B7E720600F13462 /* BaseObject.swift */; };
 		B957626F1B7F8667007D8513 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B957626E1B7F8667007D8513 /* Store.swift */; };
-		B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */; };
-		B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975406C1B72B554002AA59E /* TodoViewModel.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoController.swift */; };
 		B9903B451B79564E001698A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9903B441B79564E001698A1 /* Color.swift */; };
@@ -68,8 +66,6 @@
 		B94D85291B603CF5008A9449 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Classes/Models/Todo.swift; sourceTree = "<group>"; };
 		B955A7221B7E720600F13462 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseObject.swift; path = Classes/Models/BaseObject.swift; sourceTree = "<group>"; };
 		B957626E1B7F8667007D8513 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "View Models/ListViewModel.swift"; sourceTree = "<group>"; };
-		B975406C1B72B554002AA59E /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoViewModel.swift; path = "View Models/TodoViewModel.swift"; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListController.swift; path = "ToDo/Sources/Classes/View Controllers/ListController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoController.swift"; sourceTree = "<group>"; };
 		B9903B441B79564E001698A1 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ToDo/Sources/Structs/Color.swift; sourceTree = "<group>"; };
@@ -137,15 +133,6 @@
 			);
 			name = Models;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		B97485BA1B67CEA3001FCF78 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				B97485BB1B67CFC8001FCF78 /* ListViewModel.swift */,
-				B975406C1B72B554002AA59E /* TodoViewModel.swift */,
-			);
-			name = "View Models";
 			sourceTree = "<group>";
 		};
 		B9847CB21B5EEC4F002FEEE7 /* View Controllers */ = {
@@ -231,7 +218,6 @@
 			children = (
 				B9CD69B91B583C920072DDBD /* Application */,
 				B9847CB21B5EEC4F002FEEE7 /* View Controllers */,
-				B97485BA1B67CEA3001FCF78 /* View Models */,
 				B94D852B1B603CF9008A9449 /* Models */,
 				B957626E1B7F8667007D8513 /* Store.swift */,
 			);
@@ -449,11 +435,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B975406D1B72B554002AA59E /* TodoViewModel.swift in Sources */,
 				B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */,
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListController.swift in Sources */,
-				B97485BC1B67CFC8001FCF78 /* ListViewModel.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodoController.swift in Sources */,
 				B957626F1B7F8667007D8513 /* Store.swift in Sources */,
 				B955A7231B7E720600F13462 /* BaseObject.swift in Sources */,
