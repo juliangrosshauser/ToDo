@@ -15,15 +15,6 @@ class Store {
 
     private let realm = try! Realm()
     private var realmNotificationToken: NotificationToken?
-    static let modelChangedNotification = "ModelChangedNotification"
-
-    //MARK: Initialization
-
-    init() {
-        realmNotificationToken = realm.addNotificationBlock { notification, realm in
-            NSNotificationCenter.defaultCenter().postNotificationName(Store.modelChangedNotification, object: self)
-        }
-    }
 
     //MARK: Get Objects
 
