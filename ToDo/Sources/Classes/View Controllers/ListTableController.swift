@@ -48,7 +48,7 @@ extension ListTableController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
-        cell.textLabel?.text = store.objects(List)[indexPath.row].name
+        cell.configure(store.objects(List)[indexPath.row])
 
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
