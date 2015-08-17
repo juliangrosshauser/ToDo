@@ -19,6 +19,10 @@ class ListTableController: BaseTableController {
 
     init() {
         super.init(itemType: .List)
+
+        notificationCenter.addObserverForName(Store.listAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
