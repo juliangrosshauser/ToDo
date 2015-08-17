@@ -15,6 +15,8 @@ class Store {
 
     private let realm = try! Realm()
     private var realmNotificationToken: NotificationToken?
+    static let listAddedNotification = "ListAddedNotification"
+    static let todoAddedNotification = "TodoAddedNotification"
     private let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Get Objects
@@ -35,6 +37,8 @@ class Store {
             realm.write {
                 realm.add(list)
             }
+
+            self.notificationCenter.postNotificationName(Store.listAddedNotification, object: self)
         }
     }
 
@@ -53,6 +57,8 @@ class Store {
                 realm.write {
                     list.todos.append(todo)
                 }
+
+                self.notificationCenter.postNotificationName(Store.todoAddedNotification, object: self)
             }
         }
     }
