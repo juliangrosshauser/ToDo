@@ -9,5 +9,8 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    
+
+    func configure<Item where Item: BaseObject, Item: CustomStringConvertible>(item: Item) {
+        textLabel?.text = String(item)
+    }
 }
