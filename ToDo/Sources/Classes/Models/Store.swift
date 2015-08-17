@@ -15,6 +15,7 @@ class Store {
 
     private let realm = try! Realm()
     private var realmNotificationToken: NotificationToken?
+    private let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Get Objects
 
