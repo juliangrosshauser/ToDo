@@ -29,6 +29,10 @@ class BaseTableController: UITableViewController {
         addButton.target = self
         editButton.target = self
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
+
+        notificationCenter.addObserverForName(nil, object: store, queue: NSOperationQueue.mainQueue()) { _ in
+            self.editButton.enabled = self.enableEditButton()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +47,8 @@ class BaseTableController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
+
+        editButton.enabled = enableEditButton()
     }
 
     //MARK: Add Item
@@ -83,5 +89,17 @@ class BaseTableController: UITableViewController {
     @objc
     private func edit(sender: AnyObject) {
         setEditing(!tableView.editing, animated: true)
+    }
+
+    //MARK: Helper
+
+    func enableEditButton() -> Bool {
+        let numberOfRows = tableView.dataSource?.tableView(tableView, numberOfRowsInSection: 0) ?? 0
+
+        if numberOfRows > 0 {
+            return true
+        }
+
+        return false
     }
 }
