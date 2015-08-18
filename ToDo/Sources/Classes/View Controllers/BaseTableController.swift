@@ -89,6 +89,12 @@ class BaseTableController: UITableViewController {
     @objc
     private func edit(sender: AnyObject) {
         setEditing(!tableView.editing, animated: true)
+
+        if tableView.editing {
+            addButton.enabled = false
+        } else {
+            addButton.enabled = true
+        }
     }
 
     //MARK: Helper
