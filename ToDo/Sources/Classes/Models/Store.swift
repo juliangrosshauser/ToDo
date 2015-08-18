@@ -16,6 +16,7 @@ class Store {
     private let realm = try! Realm()
     private var realmNotificationToken: NotificationToken?
     static let listAddedNotification = "ListAddedNotification"
+    static let listDeletedNotification = "ListDeletedNotification"
     static let todoAddedNotification = "TodoAddedNotification"
     private let notificationCenter = NSNotificationCenter.defaultCenter()
 
@@ -60,6 +61,18 @@ class Store {
 
                 self.notificationCenter.postNotificationName(Store.todoAddedNotification, object: self)
             }
+        }
+    }
+
+    //MARK: Delete List
+
+    func deleteList(listID: String) {
+        if let list = realm.objects(List).filter("id == %@", listID).first {
+            realm.write {
+                self.realm.delete(list)
+            }
+
+            self.notificationCenter.postNotificationName(Store.listDeletedNotification, object: self)
         }
     }
 }
