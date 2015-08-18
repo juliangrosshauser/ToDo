@@ -60,6 +60,14 @@ extension ListTableController {
 
         return cell
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
+            store.deleteList(cell.id)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
 }
 
 //MARK: UITableViewDelegate
