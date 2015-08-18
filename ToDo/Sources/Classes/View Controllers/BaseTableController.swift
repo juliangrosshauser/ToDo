@@ -15,6 +15,7 @@ class BaseTableController: UITableViewController {
     let store = Store()
     let itemType: TableItemType
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: "addItemAction:")
+    let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: "edit:")
     let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Initialization
@@ -26,6 +27,7 @@ class BaseTableController: UITableViewController {
 
         title = "\(itemType)s"
         addButton.target = self
+        editButton.target = self
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
     }
 
@@ -39,6 +41,8 @@ class BaseTableController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = addButton
+        navigationItem.leftBarButtonItem = editButton
+        navigationItem.leftItemsSupplementBackButton = true
     }
 
     //MARK: Add Item
@@ -72,5 +76,12 @@ class BaseTableController: UITableViewController {
         if let newItemPrompt = presentedViewController as? UIAlertController {
             newItemPrompt.actions.first!.enabled = newItemPrompt.textFields!.first!.text!.characters.count > 0
         }
+    }
+
+    //MARK: Button Actions
+
+    @objc
+    private func edit(sender: AnyObject) {
+        setEditing(!tableView.editing, animated: true)
     }
 }
