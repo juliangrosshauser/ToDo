@@ -9,8 +9,10 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
+    private(set) var id = ""
 
     func configure<Item where Item: BaseObject, Item: CustomStringConvertible>(item: Item) {
+        id = item.id
         textLabel?.text = String(item)
     }
 }
