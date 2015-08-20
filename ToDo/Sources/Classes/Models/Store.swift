@@ -60,7 +60,8 @@ class Store {
                     list.todos.append(todo)
                 }
 
-                self.notificationCenter.postNotificationName(Store.todoAddedNotification, object: self)
+                let userInfo = [Store.userInfoListIDKey: list.id]
+                self.notificationCenter.postNotificationName(Store.todoAddedNotification, object: self, userInfo: userInfo)
             }
         }
     }
