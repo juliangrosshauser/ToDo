@@ -18,6 +18,7 @@ class Store {
     static let listAddedNotification = "ListAddedNotification"
     static let listDeletedNotification = "ListDeletedNotification"
     static let todoAddedNotification = "TodoAddedNotification"
+    static let userInfoListIDKey = "ListID"
     private let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Get Objects
