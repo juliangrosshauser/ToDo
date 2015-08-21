@@ -32,6 +32,11 @@ class BaseTableController: UITableViewController {
 
         notificationCenter.addObserverForName(nil, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.editButton.enabled = self.enableEditButton()
+            
+            // leave editing mode after removing last item in table view
+            if self.tableView.editing && self.tableView.dataSource?.tableView(self.tableView, numberOfRowsInSection: 0) ?? 0 == 0 {
+                self.edit(self)
+            }
         }
     }
 
@@ -88,12 +93,12 @@ class BaseTableController: UITableViewController {
 
     @objc
     private func edit(sender: AnyObject) {
-        setEditing(!tableView.editing, animated: true)
-
         if tableView.editing {
-            addButton.enabled = false
-        } else {
+            setEditing(false, animated: true)
             addButton.enabled = true
+        } else {
+            setEditing(true, animated: true)
+            addButton.enabled = false
         }
     }
 
