@@ -100,4 +100,12 @@ extension TodoTableController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
+            store.removeTodo(cell.id, list: self.list!)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
 }
