@@ -18,6 +18,7 @@ class Store {
     static let listAddedNotification = "ListAddedNotification"
     static let listDeletedNotification = "ListDeletedNotification"
     static let todoAddedNotification = "TodoAddedNotification"
+    static let todoDeletedNotification = "TodoDeletedNotification"
     static let userInfoListIDKey = "ListID"
     private let notificationCenter = NSNotificationCenter.defaultCenter()
 
@@ -75,6 +76,21 @@ class Store {
             }
 
             self.notificationCenter.postNotificationName(Store.listDeletedNotification, object: self)
+        }
+    }
+    
+    //MARK: Remove Todo From List
+    
+    func removeTodo(todoID: String, list: List) {
+        if let index = list.todos.indexOf("id == %@", todoID) {
+            let todo = list.todos[index]
+            
+            realm.write {
+                list.todos.removeAtIndex(index)
+                self.realm.delete(todo)
+            }
+            
+            self.notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self)
         }
     }
 }
