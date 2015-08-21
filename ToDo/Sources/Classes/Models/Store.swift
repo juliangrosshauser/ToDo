@@ -90,7 +90,8 @@ class Store {
                 self.realm.delete(todo)
             }
             
-            self.notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self)
+            let userInfo = [Store.userInfoListIDKey: list.id]
+            self.notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self, userInfo: userInfo)
         }
     }
 }
