@@ -18,6 +18,8 @@
 		B9903B451B79564E001698A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9903B441B79564E001698A1 /* Color.swift */; };
 		B99478BD1B8A770D00748563 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BC1B8A767600748563 /* ReactiveCocoa.framework */; };
 		B99478C01B8A77C100748563 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BF1B8A77A900748563 /* Result.framework */; };
+		B99478C41B8A78D100748563 /* ReactiveCocoa.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = B99478C21B8A78D100748563 /* ReactiveCocoa.framework.dSYM */; };
+		B99478C51B8A78D100748563 /* Result.framework.dSYM in Carthage Copy Debug Symbols */ = {isa = PBXBuildFile; fileRef = B99478C31B8A78D100748563 /* Result.framework.dSYM */; };
 		B99670A11B77FF3D0054B7A2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99670921B77FE4D0054B7A2 /* RealmSwift.framework */; };
 		B99670A21B77FF3D0054B7A2 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B99670921B77FE4D0054B7A2 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B99670A31B77FF470054B7A2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99670911B77FE4D0054B7A2 /* Realm.framework */; };
@@ -63,6 +65,18 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B99478C11B8A789400748563 /* Carthage Copy Debug Symbols */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B99478C41B8A78D100748563 /* ReactiveCocoa.framework.dSYM in Carthage Copy Debug Symbols */,
+				B99478C51B8A78D100748563 /* Result.framework.dSYM in Carthage Copy Debug Symbols */,
+			);
+			name = "Carthage Copy Debug Symbols";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +91,8 @@
 		B9903B441B79564E001698A1 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ToDo/Sources/Structs/Color.swift; sourceTree = "<group>"; };
 		B99478BC1B8A767600748563 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		B99478BF1B8A77A900748563 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		B99478C21B8A78D100748563 /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/iOS/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
+		B99478C31B8A78D100748563 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/iOS/Result.framework.dSYM; sourceTree = "<group>"; };
 		B99670911B77FE4D0054B7A2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
 		B99670921B77FE4D0054B7A2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Frameworks/RealmSwift.framework; sourceTree = "<group>"; };
 		B9B456FF1B6922FE000F0777 /* ListControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListControllerDelegate.swift; path = Protocols/ListControllerDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +195,15 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		B99478C61B8A78E800748563 /* Debug Symbols */ = {
+			isa = PBXGroup;
+			children = (
+				B99478C21B8A78D100748563 /* ReactiveCocoa.framework.dSYM */,
+				B99478C31B8A78D100748563 /* Result.framework.dSYM */,
+			);
+			name = "Debug Symbols";
+			sourceTree = "<group>";
+		};
 		B9B457011B692355000F0777 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +227,7 @@
 				B9CD69BF1B583CDB0072DDBD /* ToDoTests */,
 				B9CD69C71B583CFE0072DDBD /* ToDoUITests */,
 				B9354F001B5D9F8E00F6A320 /* Frameworks */,
+				B99478C61B8A78E800748563 /* Debug Symbols */,
 				B9CD69811B583BD30072DDBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -344,6 +370,7 @@
 				B9CD697E1B583BD30072DDBD /* Resources */,
 				B94D85271B603B91008A9449 /* Embed Frameworks */,
 				B99478BE1B8A772600748563 /* Carthage Copy Frameworks */,
+				B99478C11B8A789400748563 /* Carthage Copy Debug Symbols */,
 			);
 			buildRules = (
 			);
