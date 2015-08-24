@@ -6,5 +6,10 @@
 
 `ToDo` is a simple todo app for iOS. It uses [Realm](https://realm.io) to store todos locally and [CloudKit](https://developer.apple.com/icloud) to keep them updated on all devices.
 
+### Dependencies
+
+* [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
+* [Realm](https://realm.io)
+
 ## License
 [MIT](LICENSE)
