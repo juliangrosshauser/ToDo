@@ -6,6 +6,14 @@
 
 `ToDo` is a simple todo app for iOS. It uses [Realm](https://realm.io) to store todos locally and [CloudKit](https://developer.apple.com/icloud) to keep them updated on all devices.
 
+### Getting Started
+
+Use [Carthage](https://github.com/Carthage/Carthage) to build all dependencies:
+
+``` bash
+$ carthage bootstrap --platform ios
+```
+
 ### Dependencies
 
 * [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
