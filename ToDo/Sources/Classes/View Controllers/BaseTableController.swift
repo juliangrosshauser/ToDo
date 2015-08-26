@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class BaseTableController: UITableViewController {
 
     //MARK: Properties
+
+    let addEnabled: MutableProperty<Bool> = MutableProperty(false)
 
     let store = Store()
     let itemType: TableItemType
