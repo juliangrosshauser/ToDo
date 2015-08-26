@@ -31,6 +31,12 @@ class BaseTableController: UITableViewController {
         title = "\(itemType)s"
         addButton.target = self
         editButton.target = self
+
+        // couple `addEnabled` with `addButton.enabled`
+        addEnabled.producer.start(next: { [unowned self] value in
+            self.addButton.enabled = value
+        })
+
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
         notificationCenter.addObserverForName(nil, object: store, queue: NSOperationQueue.mainQueue()) { _ in
