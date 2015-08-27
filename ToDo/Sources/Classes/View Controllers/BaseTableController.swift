@@ -11,6 +11,8 @@ import ReactiveCocoa
 
 class BaseTableController: UITableViewController {
 
+    typealias StoreItem = (description: String) -> SignalProducer<Void, NoError>
+
     //MARK: Properties
 
     let addEnabled: MutableProperty<Bool> = MutableProperty(true)
