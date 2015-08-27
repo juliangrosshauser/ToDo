@@ -13,7 +13,7 @@ class BaseTableController: UITableViewController {
 
     //MARK: Properties
 
-    let addEnabled: MutableProperty<Bool> = MutableProperty(false)
+    let addEnabled: MutableProperty<Bool> = MutableProperty(true)
 
     let store = Store()
     let itemType: TableItemType
