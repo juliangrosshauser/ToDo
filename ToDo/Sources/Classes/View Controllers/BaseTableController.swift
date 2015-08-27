@@ -16,6 +16,7 @@ class BaseTableController: UITableViewController {
     //MARK: Properties
 
     let addEnabled: MutableProperty<Bool> = MutableProperty(true)
+    var addItem: Action<StoreItem, Void, NoError>!
 
     let store = Store()
     let itemType: TableItemType
