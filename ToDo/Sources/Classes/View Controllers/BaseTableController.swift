@@ -20,8 +20,8 @@ class BaseTableController: UITableViewController {
 
     let store = Store()
     let itemType: TableItemType
-    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: "addItemAction:")
-    let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: "edit:")
+    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
+    let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
     let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Initialization
