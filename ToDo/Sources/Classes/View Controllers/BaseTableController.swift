@@ -107,10 +107,10 @@ class BaseTableController: UITableViewController {
     private func edit(sender: AnyObject) {
         if tableView.editing {
             setEditing(false, animated: true)
-            addButton.enabled = true
+            addEnabled.value = true
         } else {
             setEditing(true, animated: true)
-            addButton.enabled = false
+            addEnabled.value = false
         }
     }
 

@@ -21,14 +21,14 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
                 if let list = list {
                     title = list.name
                     
-                    if (!addButton.enabled) {
-                        addButton.enabled = true
+                    if (!addEnabled.value) {
+                        addEnabled.value = true
                     }
                 } else {
                     title = "\(itemType)s"
                     
-                    if (addButton.enabled) {
-                        addButton.enabled = false
+                    if (addEnabled.value) {
+                        addEnabled.value = false
                     }
                 }
             }
@@ -39,6 +39,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
     init() {
         super.init(itemType: .Todo)
+        addEnabled.value = false
 
         notificationCenter.addObserverForName(Store.todoAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { notification in
             // make sure todo is added to correct list
@@ -55,12 +56,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     }
 
     //MARK: UIViewController
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        addButton.enabled = false
-    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
