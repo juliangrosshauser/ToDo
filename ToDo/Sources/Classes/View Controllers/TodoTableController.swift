@@ -48,15 +48,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
-
-        notificationCenter.addObserverForName(Store.todoAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { notification in
-            // make sure todo is added to correct list
-            if let userInfo = notification.userInfo as? [String: String], userInfoListID = userInfo[Store.userInfoListIDKey], list = self.list {
-                if userInfoListID == list.id {
-                    self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
-                }
-            }
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {

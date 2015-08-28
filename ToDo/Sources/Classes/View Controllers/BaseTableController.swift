@@ -22,7 +22,6 @@ class BaseTableController: UITableViewController {
     let itemType: TableItemType
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
-    let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Initialization
 
@@ -52,14 +51,9 @@ class BaseTableController: UITableViewController {
 
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
-        notificationCenter.addObserverForName(nil, object: store, queue: NSOperationQueue.mainQueue()) { _ in
-            self.editButton.enabled = self.enableEditButton()
-            
-            // leave editing mode after removing last item in table view
-            if self.tableView.editing && self.tableView.dataSource?.tableView(self.tableView, numberOfRowsInSection: 0) ?? 0 == 0 {
-                self.edit(self)
-            }
-        }
+        addItem.values.observe(next: { [unowned self] in
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
+        })
     }
 
     required init?(coder aDecoder: NSCoder) {
