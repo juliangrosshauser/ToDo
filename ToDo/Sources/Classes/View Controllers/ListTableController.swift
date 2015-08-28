@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ReactiveCocoa
 
 class ListTableController: BaseTableController {
 
@@ -19,6 +20,12 @@ class ListTableController: BaseTableController {
 
     init() {
         super.init(itemType: .List)
+
+        let storeItem: StoreItem = { [unowned self] name in
+            self.store.addList(name)
+        }
+
+        addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
 
         notificationCenter.addObserverForName(Store.listAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)

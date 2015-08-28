@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class TodoTableController: BaseTableController, ListControllerDelegate {
 
@@ -40,6 +41,12 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     init() {
         super.init(itemType: .Todo)
         addEnabled.value = false
+
+        let storeItem: StoreItem = { [unowned self] text in
+            self.store.appendTodo(text, list: self.list!)
+        }
+
+        addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
 
         notificationCenter.addObserverForName(Store.todoAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { notification in
             // make sure todo is added to correct list
