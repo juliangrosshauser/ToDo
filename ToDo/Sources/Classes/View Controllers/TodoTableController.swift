@@ -47,6 +47,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
+        addButton.target = addItem.unsafeCocoaAction
 
         notificationCenter.addObserverForName(Store.todoAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { notification in
             // make sure todo is added to correct list

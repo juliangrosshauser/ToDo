@@ -26,6 +26,7 @@ class ListTableController: BaseTableController {
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
+        addButton.target = addItem.unsafeCocoaAction
 
         notificationCenter.addObserverForName(Store.listAddedNotification, object: store, queue: NSOperationQueue.mainQueue()) { _ in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
