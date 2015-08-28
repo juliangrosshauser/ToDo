@@ -28,17 +28,6 @@ class ListTableController: BaseTableController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
-    //MARK: Button Actions
-
-    @objc
-    private func addItemAction(sender: AnyObject) {
-        let storeList: String -> Void = { name in
-            self.store.addList(name)
-        }
-
-        addItem(storeList)
-    }
 }
 
 //MARK: UITableViewDataSource

@@ -73,16 +73,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         }
     }
     
-    //MARK: Button Actions
-    
-    @objc
-    private func addItemAction(sender: UIButton) {
-        let storeTodo: String -> Void = { text in
-            self.store.appendTodo(text, list: self.list!)
-        }
-
-        addItem(storeTodo)
-    }
 }
 
 //MARK: UITableViewDataSource
