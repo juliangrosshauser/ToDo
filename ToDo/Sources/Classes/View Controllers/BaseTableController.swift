@@ -68,25 +68,33 @@ class BaseTableController: UITableViewController {
         editButton.enabled = enableEditButton()
     }
 
-    //MARK: Add Item
+    //MARK: Get Item Description
 
-    func addItem(storeItem: String -> Void) {
+    func getItemDescription(observer: Signal<String, NoError>.Observer) {
         let newItemPrompt = UIAlertController(title: "New \(itemType)", message: "Please enter text for new " + String(itemType).lowercaseString, preferredStyle: .Alert)
 
-        let addNewItemAction = UIAlertAction(title: "Add \(itemType)", style: .Default) { alert in
-            storeItem(newItemPrompt.textFields!.first!.text!)
+        let addNewItemAction = UIAlertAction(title: "Add \(itemType)", style: .Default) { _ in
+            sendCompleted(observer)
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { _ in
+            sendInterrupted(observer)
+        }
 
         addNewItemAction.enabled = false
         newItemPrompt.addAction(addNewItemAction)
         newItemPrompt.addAction(cancelAction)
 
-
         newItemPrompt.addTextFieldWithConfigurationHandler { textField in
             textField.placeholder = String(self.itemType)
-            textField.addTarget(self, action: "newItemChanged:", forControlEvents: .EditingChanged)
+
+            let description = textField.rac_textSignal()
+
+            description.subscribeNext { input in
+                let text = input as! String
+                sendNext(observer, text)
+                newItemPrompt.actions.first!.enabled = text.characters.count > 0
+            }
         }
 
         presentViewController(newItemPrompt, animated: true, completion: nil)
