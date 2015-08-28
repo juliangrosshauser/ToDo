@@ -15,7 +15,6 @@ class Store {
     //MARK: Properties
 
     private let realm = try! Realm()
-    private var realmNotificationToken: NotificationToken?
     static let listDeletedNotification = "ListDeletedNotification"
     static let todoDeletedNotification = "TodoDeletedNotification"
     static let userInfoListIDKey = "ListID"
