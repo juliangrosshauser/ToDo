@@ -35,6 +35,16 @@ class BaseTableController: UITableViewController {
         addButton.target = self
         editButton.target = self
 
+        addItem = Action(enabledIf: addEnabled) { [unowned self] storeItem in
+            let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
+                self.getItemDescription(observer)
+            }
+
+            return itemDescription.takeLast(1).flatMap(.Concat) { description in
+                storeItem(description: description)
+            }
+        }
+
         // couple `addEnabled` with `addButton.enabled`
         addEnabled.producer.start(next: { [unowned self] value in
             self.addButton.enabled = value
