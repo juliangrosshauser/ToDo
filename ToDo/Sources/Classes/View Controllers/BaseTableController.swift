@@ -100,15 +100,6 @@ class BaseTableController: UITableViewController {
         presentViewController(newItemPrompt, animated: true, completion: nil)
     }
 
-    //MARK: Text Field Actions
-
-    @objc
-    private func newItemChanged(sender: AnyObject) {
-        if let newItemPrompt = presentedViewController as? UIAlertController {
-            newItemPrompt.actions.first!.enabled = newItemPrompt.textFields!.first!.text!.characters.count > 0
-        }
-    }
-
     //MARK: Button Actions
 
     @objc
