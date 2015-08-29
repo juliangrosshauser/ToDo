@@ -66,7 +66,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
             }
         }
     }
-    
 }
 
 //MARK: UITableViewDataSource

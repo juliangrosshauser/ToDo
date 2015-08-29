@@ -29,9 +29,7 @@ class BaseTableController: UITableViewController {
 
     init(itemType: TableItemType) {
         self.itemType = itemType
-
         super.init(style: .Plain)
-
         title = "\(itemType)s"
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
