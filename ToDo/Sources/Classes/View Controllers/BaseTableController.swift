@@ -33,6 +33,7 @@ class BaseTableController: UITableViewController {
         super.init(style: .Plain)
 
         title = "\(itemType)s"
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
         addItem = Action(enabledIf: addEnabled) { [unowned self] storeItem in
             let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
@@ -49,7 +50,6 @@ class BaseTableController: UITableViewController {
             self.addButton.enabled = value
         })
 
-        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
         addItem.values.observe(next: { [unowned self] in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
