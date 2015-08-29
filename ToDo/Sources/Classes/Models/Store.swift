@@ -15,10 +15,6 @@ class Store {
     //MARK: Properties
 
     private let realm = try! Realm()
-    static let listDeletedNotification = "ListDeletedNotification"
-    static let todoDeletedNotification = "TodoDeletedNotification"
-    static let userInfoListIDKey = "ListID"
-    private let notificationCenter = NSNotificationCenter.defaultCenter()
 
     //MARK: Get Objects
 
@@ -60,8 +56,6 @@ class Store {
         realm.write { [unowned self] in
             self.realm.delete(list)
         }
-
-        notificationCenter.postNotificationName(Store.listDeletedNotification, object: self)
     }
     
     //MARK: Remove Todo From List
@@ -74,8 +68,5 @@ class Store {
             list.todos.removeAtIndex(index)
             self.realm.delete(todo)
         }
-        
-        let userInfo = [Store.userInfoListIDKey: list.id]
-        notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self, userInfo: userInfo)
     }
 }
