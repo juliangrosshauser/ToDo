@@ -42,7 +42,8 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         viewModel.addEnabled.value = false
 
         let storeItem: StoreItem = { [unowned self] text in
-            self.store.appendTodo(text, list: self.list!)
+            guard let viewModel = self.viewModel as? TodoViewModel else { return SignalProducer.never }
+            return viewModel.appendTodo(text, list: self.list!)
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
@@ -84,7 +85,8 @@ extension TodoTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            store.removeTodo(cell.id, list: self.list!)
+            guard let viewModel = viewModel as? TodoViewModel else { return }
+            viewModel.removeTodo(cell.id, list: self.list!)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }

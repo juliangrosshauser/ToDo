@@ -16,7 +16,6 @@ class BaseTableController: UITableViewController {
     //MARK: Properties
 
     let itemType: TableItemType
-    let store = Store()
     let viewModel: BaseViewModel
 
     var addItem: Action<StoreItem, Void, NoError>!

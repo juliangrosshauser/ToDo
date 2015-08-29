@@ -22,7 +22,8 @@ class ListTableController: BaseTableController {
         super.init(itemType: .List, viewModel: ListViewModel())
 
         let storeItem: StoreItem = { [unowned self] name in
-            self.store.addList(name)
+            guard let viewModel = self.viewModel as? ListViewModel else { return SignalProducer.never }
+            return viewModel.addList(name)
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
@@ -39,13 +40,13 @@ class ListTableController: BaseTableController {
 extension ListTableController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.objects(List).count
+        return viewModel.objects(List).count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
-        cell.configure(store.objects(List)[indexPath.row])
+        cell.configure(viewModel.objects(List)[indexPath.row])
 
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
@@ -57,7 +58,8 @@ extension ListTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            store.deleteList(cell.id)
+            guard let viewModel = viewModel as? ListViewModel else { return }
+            viewModel.deleteList(cell.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -68,7 +70,7 @@ extension ListTableController {
 extension ListTableController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.list = store.objects(List)[indexPath.row]
+        delegate?.list = viewModel.objects(List)[indexPath.row]
         
         guard let splitViewController = splitViewController, detailViewController = delegate as? UIViewController else { return }
 
