@@ -21,6 +21,8 @@ class BaseTableController: UITableViewController {
     let store = Store()
     let itemType: TableItemType
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
+
+    let editEnabled: MutableProperty<Bool> = MutableProperty(true)
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
 
     //MARK: Initialization
