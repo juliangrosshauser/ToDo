@@ -48,6 +48,10 @@ class BaseTableController: UITableViewController {
             self.addButton.enabled = value
         })
 
+        // couple `editEnabled` with `editButton.enabled`
+        editEnabled.producer.start(next: { [unowned self] value in
+            self.editButton.enabled = value
+        })
 
         addItem.values.observe(next: { [unowned self] in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
