@@ -31,8 +31,6 @@ class BaseTableController: UITableViewController {
         super.init(style: .Plain)
 
         title = "\(itemType)s"
-        addButton.target = self
-        editButton.target = self
 
         addItem = Action(enabledIf: addEnabled) { [unowned self] storeItem in
             let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
