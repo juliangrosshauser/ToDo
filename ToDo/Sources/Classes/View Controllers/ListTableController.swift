@@ -70,18 +70,18 @@ extension ListTableController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         delegate?.list = store.objects(List)[indexPath.row]
         
-        if let splitViewController = splitViewController, detailViewController = delegate as? UIViewController {
-            if splitViewController.collapsed {
-                splitViewController.showDetailViewController(detailViewController, sender: nil)
-            } else {
-                if splitViewController.displayMode == .PrimaryOverlay {
-                    UIView.animateWithDuration(0.3) {
-                        splitViewController.preferredDisplayMode = .PrimaryHidden
-                    }
-                    
-                    splitViewController.preferredDisplayMode = .Automatic
-                }
+        guard let splitViewController = splitViewController, detailViewController = delegate as? UIViewController else { return }
+
+        if splitViewController.collapsed {
+            splitViewController.showDetailViewController(detailViewController, sender: nil)
+        } else {
+            guard splitViewController.displayMode == .PrimaryOverlay else { return }
+            
+            UIView.animateWithDuration(0.3) {
+                splitViewController.preferredDisplayMode = .PrimaryHidden
             }
+            
+            splitViewController.preferredDisplayMode = .Automatic
         }
     }
 }

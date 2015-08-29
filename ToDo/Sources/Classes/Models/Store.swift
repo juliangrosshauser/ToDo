@@ -55,28 +55,27 @@ class Store {
     //MARK: Delete List
 
     func deleteList(listID: String) {
-        if let list = realm.objects(List).filter("id == %@", listID).first {
-            realm.write {
-                self.realm.delete(list)
-            }
+        guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
 
-            self.notificationCenter.postNotificationName(Store.listDeletedNotification, object: self)
+        realm.write { [unowned self] in
+            self.realm.delete(list)
         }
+
+        notificationCenter.postNotificationName(Store.listDeletedNotification, object: self)
     }
     
     //MARK: Remove Todo From List
     
     func removeTodo(todoID: String, list: List) {
-        if let index = list.todos.indexOf("id == %@", todoID) {
-            let todo = list.todos[index]
-            
-            realm.write {
-                list.todos.removeAtIndex(index)
-                self.realm.delete(todo)
-            }
-            
-            let userInfo = [Store.userInfoListIDKey: list.id]
-            self.notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self, userInfo: userInfo)
+        guard let index = list.todos.indexOf("id == %@", todoID) else { return }
+        let todo = list.todos[index]
+        
+        realm.write { [unowned self] in
+            list.todos.removeAtIndex(index)
+            self.realm.delete(todo)
         }
+        
+        let userInfo = [Store.userInfoListIDKey: list.id]
+        notificationCenter.postNotificationName(Store.todoDeletedNotification, object: self, userInfo: userInfo)
     }
 }

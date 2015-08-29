@@ -15,22 +15,21 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     
     var list: List? {
         didSet {
-            if list != oldValue {
-                tableView.reloadData()
-                editEnabled.value = enableEditButton()
+            guard list != oldValue else { return }
+            tableView.reloadData()
+            editEnabled.value = enableEditButton()
+            
+            if let list = list {
+                title = list.name
                 
-                if let list = list {
-                    title = list.name
-                    
-                    if (!addEnabled.value) {
-                        addEnabled.value = true
-                    }
-                } else {
-                    title = "\(itemType)s"
-                    
-                    if (addEnabled.value) {
-                        addEnabled.value = false
-                    }
+                if (!addEnabled.value) {
+                    addEnabled.value = true
+                }
+            } else {
+                title = "\(itemType)s"
+                
+                if (addEnabled.value) {
+                    addEnabled.value = false
                 }
             }
         }
@@ -59,12 +58,10 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if list == nil {
-            if let splitViewController = splitViewController where splitViewController.displayMode == .PrimaryHidden  {
-                splitViewController.preferredDisplayMode = .PrimaryOverlay
-                splitViewController.preferredDisplayMode = .Automatic
-            }
-        }
+        guard list == nil else { return }
+        guard let splitViewController = splitViewController where splitViewController.displayMode == .PrimaryHidden else { return }
+        splitViewController.preferredDisplayMode = .PrimaryOverlay
+        splitViewController.preferredDisplayMode = .Automatic
     }
 }
 
