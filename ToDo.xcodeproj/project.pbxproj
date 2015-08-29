@@ -19,6 +19,7 @@
 		B95762751B7F8BAD007D8513 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95762741B7F8BAD007D8513 /* TableViewCell.swift */; };
 		B9847CB11B5EEC44002FEEE7 /* ListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListTableController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoTableController.swift */; };
+		B98A7CC31B92663A0007FB7C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		B9903B451B79564E001698A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9903B441B79564E001698A1 /* Color.swift */; };
 		B99478BD1B8A770D00748563 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BC1B8A767600748563 /* ReactiveCocoa.framework */; };
 		B99478C01B8A77C100748563 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BF1B8A77A900748563 /* Result.framework */; };
@@ -90,6 +91,7 @@
 		B95762741B7F8BAD007D8513 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ToDo/Sources/Classes/Views/TableViewCell.swift; sourceTree = "<group>"; };
 		B9847CB01B5EEC44002FEEE7 /* ListTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTableController.swift; path = "ToDo/Sources/Classes/View Controllers/ListTableController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoTableController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoTableController.swift"; sourceTree = "<group>"; };
+		B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewModel.swift; path = "ToDo/Sources/Classes/View Models/BaseViewModel.swift"; sourceTree = "<group>"; };
 		B9903B441B79564E001698A1 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ToDo/Sources/Structs/Color.swift; sourceTree = "<group>"; };
 		B99478BC1B8A767600748563 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		B99478BF1B8A77A900748563 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -186,6 +188,15 @@
 			path = ../../..;
 			sourceTree = "<group>";
 		};
+		B98A7CC41B9266BE0007FB7C /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */,
+			);
+			name = "View Models";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
 		B9903B461B795686001698A1 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +289,7 @@
 			children = (
 				B9CD69B91B583C920072DDBD /* Application */,
 				B9847CB21B5EEC4F002FEEE7 /* View Controllers */,
+				B98A7CC41B9266BE0007FB7C /* View Models */,
 				B95762761B7F8BB6007D8513 /* Views */,
 				B94D852B1B603CF9008A9449 /* Models */,
 			);
@@ -523,6 +535,7 @@
 				B9C4183B1B7FE02D0050D6F5 /* TableItemType.swift in Sources */,
 				B9847CB41B5EECA1002FEEE7 /* TodoTableController.swift in Sources */,
 				B955A7231B7E720600F13462 /* BaseObject.swift in Sources */,
+				B98A7CC31B92663A0007FB7C /* BaseViewModel.swift in Sources */,
 				B95762751B7F8BAD007D8513 /* TableViewCell.swift in Sources */,
 				B9D613FB1B6184DE001FC7F4 /* List.swift in Sources */,
 				B94D852A1B603CF5008A9449 /* Todo.swift in Sources */,
