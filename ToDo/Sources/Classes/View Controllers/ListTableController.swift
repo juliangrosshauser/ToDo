@@ -19,7 +19,7 @@ class ListTableController: BaseTableController {
     //MARK: Initialization
 
     init() {
-        super.init(itemType: .List)
+        super.init(itemType: .List, viewModel: ListViewModel())
 
         let storeItem: StoreItem = { [unowned self] name in
             self.store.addList(name)

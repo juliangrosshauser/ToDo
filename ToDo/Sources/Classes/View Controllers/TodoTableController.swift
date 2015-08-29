@@ -38,8 +38,8 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     //MARK: Initialization
 
     init() {
-        super.init(itemType: .Todo)
         addEnabled.value = false
+        super.init(itemType: .Todo, viewModel: TodoViewModel())
 
         let storeItem: StoreItem = { [unowned self] text in
             self.store.appendTodo(text, list: self.list!)

@@ -17,6 +17,7 @@ class BaseTableController: UITableViewController {
 
     let itemType: TableItemType
     let store = Store()
+    let viewModel: BaseViewModel
 
     let addEnabled: MutableProperty<Bool> = MutableProperty(true)
     var addItem: Action<StoreItem, Void, NoError>!
@@ -27,8 +28,9 @@ class BaseTableController: UITableViewController {
 
     //MARK: Initialization
 
-    init(itemType: TableItemType) {
+    init(itemType: TableItemType, viewModel: BaseViewModel) {
         self.itemType = itemType
+        self.viewModel = viewModel
         super.init(style: .Plain)
         title = "\(itemType)s"
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
