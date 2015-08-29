@@ -21,7 +21,7 @@ class Store {
         return realm.objects(type)
     }
 
-    //MARK: Add List
+    //MARK: Managing Lists
 
     func addList(name: String) {
         let list = List()
@@ -32,8 +32,6 @@ class Store {
         }
     }
 
-    //MARK: Append Todo To List
-
     func appendTodo(text: String, list: List) {
         let todo = Todo()
         todo.text = text
@@ -43,7 +41,7 @@ class Store {
         }
     }
 
-    //MARK: Delete List
+    //MARK: Managing Todos
 
     func deleteList(listID: String) {
         guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
@@ -52,8 +50,6 @@ class Store {
             self.realm.delete(list)
         }
     }
-    
-    //MARK: Remove Todo From List
     
     func removeTodo(todoID: String, list: List) {
         guard let index = list.todos.indexOf("id == %@", todoID) else { return }
