@@ -15,11 +15,11 @@ class BaseTableController: UITableViewController {
 
     //MARK: Properties
 
+    let itemType: TableItemType
+    let store = Store()
+
     let addEnabled: MutableProperty<Bool> = MutableProperty(true)
     var addItem: Action<StoreItem, Void, NoError>!
-
-    let store = Store()
-    let itemType: TableItemType
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
     let editEnabled: MutableProperty<Bool> = MutableProperty(true)
