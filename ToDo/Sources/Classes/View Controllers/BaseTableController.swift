@@ -71,7 +71,7 @@ class BaseTableController: UITableViewController {
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
 
-        editButton.enabled = enableEditButton()
+        editEnabled.value = enableEditButton()
     }
 
     //MARK: Get Item Description
