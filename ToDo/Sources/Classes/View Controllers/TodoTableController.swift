@@ -17,19 +17,19 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         didSet {
             guard list != oldValue else { return }
             tableView.reloadData()
-            editEnabled.value = enableEditButton()
+            viewModel.editEnabled.value = enableEditButton()
             
             if let list = list {
                 title = list.name
                 
-                if (!addEnabled.value) {
-                    addEnabled.value = true
+                if (!viewModel.addEnabled.value) {
+                    viewModel.addEnabled.value = true
                 }
             } else {
                 title = "\(itemType)s"
                 
-                if (addEnabled.value) {
-                    addEnabled.value = false
+                if (viewModel.addEnabled.value) {
+                    viewModel.addEnabled.value = false
                 }
             }
         }
@@ -38,8 +38,8 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     //MARK: Initialization
 
     init() {
-        addEnabled.value = false
         super.init(itemType: .Todo, viewModel: TodoViewModel())
+        viewModel.addEnabled.value = false
 
         let storeItem: StoreItem = { [unowned self] text in
             self.store.appendTodo(text, list: self.list!)

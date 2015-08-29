@@ -19,11 +19,9 @@ class BaseTableController: UITableViewController {
     let store = Store()
     let viewModel: BaseViewModel
 
-    let addEnabled: MutableProperty<Bool> = MutableProperty(true)
     var addItem: Action<StoreItem, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
-    let editEnabled: MutableProperty<Bool> = MutableProperty(true)
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
 
     //MARK: Initialization
@@ -35,7 +33,7 @@ class BaseTableController: UITableViewController {
         title = "\(itemType)s"
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
-        addItem = Action(enabledIf: addEnabled) { [unowned self] storeItem in
+        addItem = Action(enabledIf: viewModel.addEnabled) { [unowned self] storeItem in
             let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
                 self.getItemDescription(observer)
             }
@@ -46,12 +44,12 @@ class BaseTableController: UITableViewController {
         }
 
         // couple `addEnabled` with `addButton.enabled`
-        addEnabled.producer.start(next: { [unowned self] value in
+        viewModel.addEnabled.producer.start(next: { [unowned self] value in
             self.addButton.enabled = value
         })
 
         // couple `editEnabled` with `editButton.enabled`
-        editEnabled.producer.start(next: { [unowned self] value in
+        viewModel.editEnabled.producer.start(next: { [unowned self] value in
             self.editButton.enabled = value
         })
 
@@ -73,7 +71,7 @@ class BaseTableController: UITableViewController {
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
 
-        editEnabled.value = enableEditButton()
+        viewModel.editEnabled.value = enableEditButton()
     }
 
     //MARK: Get Item Description
@@ -114,10 +112,10 @@ class BaseTableController: UITableViewController {
     private func edit(sender: AnyObject) {
         if tableView.editing {
             setEditing(false, animated: true)
-            addEnabled.value = true
+            viewModel.addEnabled.value = true
         } else {
             setEditing(true, animated: true)
-            addEnabled.value = false
+            viewModel.addEnabled.value = false
         }
     }
 
