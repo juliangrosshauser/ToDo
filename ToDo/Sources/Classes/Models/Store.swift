@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import ReactiveCocoa
 
 class Store {
 
@@ -24,28 +23,24 @@ class Store {
 
     //MARK: Add List
 
-    func addList(name: String) -> SignalProducer<Void, NoError> {
+    func addList(name: String) {
         let list = List()
         list.name = name
 
         realm.write { [unowned self] in
             self.realm.add(list)
         }
-
-        return SignalProducer(value: ())
     }
 
     //MARK: Append Todo To List
 
-    func appendTodo(text: String, list: List) -> SignalProducer<Void, NoError> {
+    func appendTodo(text: String, list: List) {
         let todo = Todo()
         todo.text = text
 
         realm.write {
             list.todos.append(todo)
         }
-
-        return SignalProducer(value: ())
     }
 
     //MARK: Delete List
