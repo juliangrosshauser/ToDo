@@ -20,6 +20,7 @@
 		B9847CB11B5EEC44002FEEE7 /* ListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB01B5EEC44002FEEE7 /* ListTableController.swift */; };
 		B9847CB41B5EECA1002FEEE7 /* TodoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9847CB31B5EECA1002FEEE7 /* TodoTableController.swift */; };
 		B98A7CC31B92663A0007FB7C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		B98A7CC61B9267A50007FB7C /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98A7CC51B9267A50007FB7C /* ListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		B9903B451B79564E001698A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9903B441B79564E001698A1 /* Color.swift */; };
 		B99478BD1B8A770D00748563 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BC1B8A767600748563 /* ReactiveCocoa.framework */; };
 		B99478C01B8A77C100748563 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99478BF1B8A77A900748563 /* Result.framework */; };
@@ -92,6 +93,7 @@
 		B9847CB01B5EEC44002FEEE7 /* ListTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTableController.swift; path = "ToDo/Sources/Classes/View Controllers/ListTableController.swift"; sourceTree = "<group>"; };
 		B9847CB31B5EECA1002FEEE7 /* TodoTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoTableController.swift; path = "ToDo/Sources/Classes/View Controllers/TodoTableController.swift"; sourceTree = "<group>"; };
 		B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewModel.swift; path = "ToDo/Sources/Classes/View Models/BaseViewModel.swift"; sourceTree = "<group>"; };
+		B98A7CC51B9267A50007FB7C /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewModel.swift; path = "ToDo/Sources/Classes/View Models/ListViewModel.swift"; sourceTree = "<group>"; };
 		B9903B441B79564E001698A1 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ToDo/Sources/Structs/Color.swift; sourceTree = "<group>"; };
 		B99478BC1B8A767600748563 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		B99478BF1B8A77A900748563 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				B98A7CC21B92663A0007FB7C /* BaseViewModel.swift */,
+				B98A7CC51B9267A50007FB7C /* ListViewModel.swift */,
 			);
 			name = "View Models";
 			path = ../../..;
@@ -530,6 +533,7 @@
 			files = (
 				B9B457001B6922FE000F0777 /* ListControllerDelegate.swift in Sources */,
 				B9CD69BE1B583C920072DDBD /* AppDelegate.swift in Sources */,
+				B98A7CC61B9267A50007FB7C /* ListViewModel.swift in Sources */,
 				B9847CB11B5EEC44002FEEE7 /* ListTableController.swift in Sources */,
 				B9C4183E1B7FE5440050D6F5 /* Store.swift in Sources */,
 				B9C4183B1B7FE02D0050D6F5 /* TableItemType.swift in Sources */,
