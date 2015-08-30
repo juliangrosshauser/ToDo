@@ -67,6 +67,10 @@ class BaseTableController: UITableViewController {
         addItem.values.observe(next: { [unowned self] in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
         })
+
+        editItems.values.observe(next: { [unowned self] editing in
+            self.viewModel.addEnabled.value = !editing
+        })
     }
 
     required init?(coder aDecoder: NSCoder) {
