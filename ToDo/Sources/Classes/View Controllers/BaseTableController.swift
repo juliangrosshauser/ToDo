@@ -43,6 +43,14 @@ class BaseTableController: UITableViewController {
             }
         }
 
+        editItems = Action(enabledIf: viewModel.editEnabled) { [unowned self] _ in
+            return SignalProducer { observer, _ in
+                self.setEditing(!self.tableView.editing, animated: true)
+                sendNext(observer, self.tableView.editing)
+                sendCompleted(observer)
+            }
+        }
+
         // couple `addEnabled` with `addButton.enabled`
         viewModel.addEnabled.producer.start(next: { [unowned self] value in
             self.addButton.enabled = value
