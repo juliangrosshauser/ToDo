@@ -121,19 +121,6 @@ class BaseTableController: UITableViewController {
         presentViewController(newItemPrompt, animated: true, completion: nil)
     }
 
-    //MARK: Button Actions
-
-    @objc
-    private func edit(sender: AnyObject) {
-        if tableView.editing {
-            setEditing(false, animated: true)
-            viewModel.addEnabled.value = true
-        } else {
-            setEditing(true, animated: true)
-            viewModel.addEnabled.value = false
-        }
-    }
-
     //MARK: Helper
 
     func enableEditButton() -> Bool {
