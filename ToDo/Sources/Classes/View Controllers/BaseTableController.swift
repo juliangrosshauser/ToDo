@@ -51,6 +51,9 @@ class BaseTableController: UITableViewController {
             }
         }
 
+        editItems.unsafeCocoaAction = CocoaAction(editItems, input: ())
+        editButton.target = editItems.unsafeCocoaAction
+
         // couple `addEnabled` with `addButton.enabled`
         viewModel.addEnabled.producer.start(next: { [unowned self] value in
             self.addButton.enabled = value
