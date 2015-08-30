@@ -21,6 +21,7 @@ class BaseTableController: UITableViewController {
     var addItem: Action<StoreItem, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
+    var editItems: Action<Void, Bool, NoError>!
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
 
     //MARK: Initialization
