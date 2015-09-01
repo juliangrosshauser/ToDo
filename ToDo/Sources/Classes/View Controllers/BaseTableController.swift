@@ -31,7 +31,6 @@ class BaseTableController: UITableViewController {
         self.viewModel = viewModel
         super.init(style: .Plain)
         title = "\(itemType)s"
-        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
 
         addItem = Action(enabledIf: viewModel.addEnabled) { [unowned self] storeItem in
             let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
@@ -82,6 +81,8 @@ class BaseTableController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: String(TableViewCell))
+        
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
