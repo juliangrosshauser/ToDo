@@ -21,7 +21,7 @@ class BaseTableController: UITableViewController {
     var addItem: Action<StoreItem, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
-    var editItems: Action<Void, Bool, NoError>!
+    var editItems: Action<Bool, Bool, NoError>!
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
 
     //MARK: Initialization
@@ -42,7 +42,9 @@ class BaseTableController: UITableViewController {
             }
         }
 
-        editItems = Action(enabledIf: viewModel.editEnabled) { [unowned self] _ in
+        editItems = Action(enabledIf: viewModel.editEnabled) { [unowned self] execute in
+            guard execute else { return SignalProducer.empty }
+
             return SignalProducer { observer, _ in
                 self.setEditing(!self.tableView.editing, animated: true)
                 sendNext(observer, self.tableView.editing)
@@ -50,7 +52,19 @@ class BaseTableController: UITableViewController {
             }
         }
 
-        editItems.unsafeCocoaAction = CocoaAction(editItems, input: ())
+        editItems.unsafeCocoaAction = CocoaAction(editItems) { input in
+            switch input {
+            case is UIBarButtonItem:
+                return true
+
+            case let longPressGestureRecognizer as UILongPressGestureRecognizer:
+                guard longPressGestureRecognizer.state == .Ended else { return false }
+                return true
+
+            default:
+                return false
+            }
+        }
         editButton.target = editItems.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
