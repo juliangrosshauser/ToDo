@@ -102,6 +102,10 @@ class BaseTableController: UITableViewController {
         navigationItem.leftItemsSupplementBackButton = true
 
         viewModel.editEnabled.value = enableEditButton()
+
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: editItems.unsafeCocoaAction, action: CocoaAction.selector)
+        longPressGestureRecognizer.delaysTouchesBegan = true
+        tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
 
     //MARK: Get Item Description
