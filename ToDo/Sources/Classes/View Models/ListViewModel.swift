@@ -10,6 +10,10 @@ import ReactiveCocoa
 
 class ListViewModel: BaseViewModel {
 
+    //MARK: Properties
+
+    let itemCount: MutableProperty<Int> = MutableProperty(0)
+
     //MARK: Managing Lists
 
     func addList(name: String) -> SignalProducer<Void, NoError> {
