@@ -14,6 +14,13 @@ class ListViewModel: BaseViewModel {
 
     let itemCount: MutableProperty<Int> = MutableProperty(0)
 
+    //MARK: Initialization
+
+    override init() {
+        super.init()
+        itemCount.value = store.objects(List).count
+    }
+
     //MARK: Managing Lists
 
     func addList(name: String) -> SignalProducer<Void, NoError> {
