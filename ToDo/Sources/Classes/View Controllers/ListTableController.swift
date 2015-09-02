@@ -29,6 +29,9 @@ class ListTableController: BaseTableController {
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
+
+        guard let viewModel = self.viewModel as? ListViewModel else { return }
+        itemCount <~ viewModel.itemCount
     }
 
     required init?(coder aDecoder: NSCoder) {
