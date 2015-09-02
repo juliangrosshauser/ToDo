@@ -12,6 +12,7 @@ class ListViewModel: BaseViewModel {
 
     //MARK: Properties
 
+    //TODO: Bind to add/delete signal instead of setting value manually
     let itemCount: MutableProperty<Int> = MutableProperty(0)
 
     //MARK: Initialization
@@ -24,10 +25,12 @@ class ListViewModel: BaseViewModel {
     //MARK: Managing Lists
 
     func addList(name: String) -> SignalProducer<Void, NoError> {
+        itemCount.value++
         return SignalProducer(value: store.addList(name))
     }
 
     func deleteList(listID: String) {
+        itemCount.value--
         store.deleteList(listID)
     }
 }
