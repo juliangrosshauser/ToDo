@@ -15,6 +15,7 @@ class ListTableController: BaseTableController {
     //MARK: Properties
 
     weak var delegate: ListControllerDelegate?
+    private let itemCount: MutableProperty<Int> = MutableProperty(0)
 
     //MARK: Initialization
 
