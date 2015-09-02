@@ -23,6 +23,7 @@ class BaseTableController: UITableViewController {
 
     var editItems: Action<Bool, Bool, NoError>!
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: CocoaAction.selector)
 
     //MARK: Initialization
 
@@ -66,6 +67,7 @@ class BaseTableController: UITableViewController {
             }
         }
         editButton.target = editItems.unsafeCocoaAction
+        doneButton.target = editItems.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
         viewModel.addEnabled.producer.start(next: { [unowned self] value in
@@ -83,6 +85,12 @@ class BaseTableController: UITableViewController {
 
         editItems.values.observe(next: { [unowned self] editing in
             self.viewModel.addEnabled.value = !editing
+
+            if editing {
+                self.navigationItem.leftBarButtonItem = self.doneButton
+            } else {
+                self.navigationItem.leftBarButtonItem = self.editButton
+            }
         })
     }
 
