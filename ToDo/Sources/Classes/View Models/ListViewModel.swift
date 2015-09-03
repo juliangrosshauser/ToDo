@@ -33,4 +33,8 @@ class ListViewModel: BaseViewModel {
         itemCount.value--
         store.deleteList(listID)
     }
+
+    func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) {
+        store.moveList(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
+    }
 }
