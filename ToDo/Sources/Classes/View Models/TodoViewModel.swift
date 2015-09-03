@@ -19,4 +19,8 @@ class TodoViewModel: BaseViewModel {
     func removeTodo(todoID: String, list: List) {
         store.removeTodo(todoID, list: list)
     }
+
+    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int, list: List) {
+        store.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex, list: list)
+    }
 }
