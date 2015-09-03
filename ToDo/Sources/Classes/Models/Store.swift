@@ -25,6 +25,7 @@ class Store {
 
     func addList(name: String) {
         let list = List(name: name)
+        list.index = objects(List.self).count
 
         realm.write { [unowned self] in
             self.realm.add(list)
