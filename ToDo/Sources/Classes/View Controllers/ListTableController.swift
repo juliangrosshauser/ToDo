@@ -72,6 +72,11 @@ extension ListTableController {
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        guard let viewModel = viewModel as? ListViewModel else { return }
+        viewModel.moveList(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+    }
 }
 
 //MARK: UITableViewDelegate
