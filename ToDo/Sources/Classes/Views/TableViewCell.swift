@@ -14,5 +14,6 @@ class TableViewCell: UITableViewCell {
     func configure<Item where Item: BaseObject, Item: CustomStringConvertible>(item: Item) {
         id = item.id
         textLabel?.text = String(item)
+        showsReorderControl = true
     }
 }

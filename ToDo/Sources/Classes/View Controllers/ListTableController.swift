@@ -15,6 +15,7 @@ class ListTableController: BaseTableController {
     //MARK: Properties
 
     weak var delegate: ListControllerDelegate?
+    private let itemCount: MutableProperty<Int> = MutableProperty(0)
 
     //MARK: Initialization
 
@@ -28,6 +29,9 @@ class ListTableController: BaseTableController {
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
+
+        guard let viewModel = self.viewModel as? ListViewModel else { return }
+        itemCount <~ viewModel.itemCount
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -63,6 +67,15 @@ extension ListTableController {
             viewModel.deleteList(cell.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+    }
+
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        guard let viewModel = viewModel as? ListViewModel else { return }
+        viewModel.moveList(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
     }
 }
 

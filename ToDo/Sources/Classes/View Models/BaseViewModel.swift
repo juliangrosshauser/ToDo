@@ -21,6 +21,6 @@ class BaseViewModel {
     //MARK: Get Objects
 
     func objects<T: BaseObject>(type: T.Type) -> Results<T> {
-        return store.objects(type)
+        return store.objects(type).sorted("index")
     }
 }

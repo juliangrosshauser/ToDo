@@ -25,6 +25,7 @@ class Store {
 
     func addList(name: String) {
         let list = List(name: name)
+        list.index = objects(List.self).count
 
         realm.write { [unowned self] in
             self.realm.add(list)
@@ -39,13 +40,28 @@ class Store {
         }
     }
 
+    func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) {
+        guard let sourceList = realm.objects(List).filter("index == %@", sourceIndex).first else { return }
+        guard let destinationList = realm.objects(List).filter("index == %@", destinationIndex).first else { return }
+
+        realm.write {
+            sourceList.index = destinationIndex
+            destinationList.index = sourceIndex
+        }
+    }
+
     //MARK: Managing Todos
 
     func deleteList(listID: String) {
         guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
+        let listsToUpdate = realm.objects(List).filter("index > %@", list.index)
 
         realm.write { [unowned self] in
             self.realm.delete(list)
+
+            for list in listsToUpdate {
+                list.index--
+            }
         }
     }
     
@@ -56,6 +72,12 @@ class Store {
         realm.write { [unowned self] in
             list.todos.removeAtIndex(index)
             self.realm.delete(todo)
+        }
+    }
+
+    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int, list: List) {
+        realm.write {
+            list.todos.swap(sourceIndex, destinationIndex)
         }
     }
 }

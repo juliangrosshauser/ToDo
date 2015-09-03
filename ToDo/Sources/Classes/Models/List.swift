@@ -14,6 +14,7 @@ class List: BaseObject, CustomStringConvertible {
     //MARK: Properties
 
     dynamic var name = ""
+    dynamic var index = 0
     let todos = RealmSwift.List<Todo>()
 
     //MARK: Initialization
