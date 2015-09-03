@@ -47,6 +47,7 @@ extension ListTableController {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
         cell.configure(viewModel.objects(List)[indexPath.row])
+        cell.accessoryType = .DisclosureIndicator
 
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
