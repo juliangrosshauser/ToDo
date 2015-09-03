@@ -54,9 +54,14 @@ class Store {
 
     func deleteList(listID: String) {
         guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
+        let listsToUpdate = realm.objects(List).filter("index > %@", list.index)
 
         realm.write { [unowned self] in
             self.realm.delete(list)
+
+            for list in listsToUpdate {
+                list.index--
+            }
         }
     }
     
