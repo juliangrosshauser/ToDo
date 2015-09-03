@@ -69,4 +69,10 @@ class Store {
             self.realm.delete(todo)
         }
     }
+
+    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int, list: List) {
+        realm.write {
+            list.todos.swap(sourceIndex, destinationIndex)
+        }
+    }
 }
