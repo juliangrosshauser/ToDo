@@ -40,6 +40,16 @@ class Store {
         }
     }
 
+    func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) {
+        guard let sourceList = realm.objects(List).filter("index == %@", sourceIndex).first else { return }
+        guard let destinationList = realm.objects(List).filter("index == %@", destinationIndex).first else { return }
+
+        realm.write {
+            sourceList.index = destinationIndex
+            destinationList.index = sourceIndex
+        }
+    }
+
     //MARK: Managing Todos
 
     func deleteList(listID: String) {
