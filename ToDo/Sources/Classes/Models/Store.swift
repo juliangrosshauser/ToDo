@@ -24,8 +24,7 @@ class Store {
     //MARK: Managing Lists
 
     func addList(name: String) {
-        let list = List()
-        list.name = name
+        let list = List(name: name)
 
         realm.write { [unowned self] in
             self.realm.add(list)
@@ -33,8 +32,7 @@ class Store {
     }
 
     func appendTodo(text: String, list: List) {
-        let todo = Todo()
-        todo.text = text
+        let todo = Todo(text: text)
 
         realm.write {
             list.todos.append(todo)
