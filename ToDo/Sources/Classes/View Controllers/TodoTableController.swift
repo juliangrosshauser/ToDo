@@ -64,6 +64,13 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         splitViewController.preferredDisplayMode = .PrimaryOverlay
         splitViewController.preferredDisplayMode = .Automatic
     }
+
+    //MARK: ListControllerDelegate
+
+    func listChanged(list: List?) {
+        guard let viewModel = self.viewModel as? TodoViewModel else { return }
+        viewModel.list.value = list
+    }
 }
 
 //MARK: UITableViewDataSource
