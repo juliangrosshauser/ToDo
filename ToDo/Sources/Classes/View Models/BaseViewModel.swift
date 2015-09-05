@@ -19,12 +19,15 @@ class BaseViewModel {
     let editEnabled = MutableProperty(true)
 
     let editItems: Action<Bool, Bool, NoError>
+    let newNumberOfItems: Action<Int, Int, NoError>
 
     //MARK: Initialization
 
     init() {
         editItems = Action(enabledIf: editEnabled) { SignalProducer(value: !$0) }
+        newNumberOfItems = Action { SignalProducer(value: $0) }
         addEnabled <~ editItems.values.map { !$0 }
+        editEnabled <~ newNumberOfItems.values.map {  $0 > 0 ? true : false }
     }
 
     //MARK: Get Objects
