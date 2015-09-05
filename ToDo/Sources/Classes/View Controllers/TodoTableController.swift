@@ -17,7 +17,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
         didSet {
             guard list != oldValue else { return }
             tableView.reloadData()
-            viewModel.editEnabled.value = enableEditButton()
+            newNumberOfItems()
             
             if let list = list {
                 title = list.name

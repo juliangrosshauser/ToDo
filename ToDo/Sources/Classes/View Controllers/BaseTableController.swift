@@ -108,7 +108,7 @@ class BaseTableController: UITableViewController {
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
 
-        viewModel.editEnabled.value = enableEditButton()
+        newNumberOfItems()
 
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: edit.unsafeCocoaAction, action: CocoaAction.selector)
         longPressGestureRecognizer.delaysTouchesBegan = true
@@ -149,13 +149,7 @@ class BaseTableController: UITableViewController {
 
     //MARK: Helper
 
-    func enableEditButton() -> Bool {
-        let numberOfRows = tableView.dataSource?.tableView(tableView, numberOfRowsInSection: 0) ?? 0
-
-        if numberOfRows > 0 {
-            return true
-        }
-
-        return false
+    func newNumberOfItems() {
+        viewModel.newNumberOfItems.apply(tableView.dataSource?.tableView(self.tableView, numberOfRowsInSection: 0) ?? 0).start()
     }
 }
