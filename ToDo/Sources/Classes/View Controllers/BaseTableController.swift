@@ -100,8 +100,6 @@ class BaseTableController: UITableViewController {
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
 
-        newNumberOfItems()
-
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: edit.unsafeCocoaAction, action: CocoaAction.selector)
         longPressGestureRecognizer.delaysTouchesBegan = true
         tableView.addGestureRecognizer(longPressGestureRecognizer)
@@ -137,11 +135,5 @@ class BaseTableController: UITableViewController {
         }
 
         presentViewController(newItemPrompt, animated: true, completion: nil)
-    }
-
-    //MARK: Helper
-
-    func newNumberOfItems() {
-        viewModel.newNumberOfItems.apply(tableView.dataSource?.tableView(self.tableView, numberOfRowsInSection: 0) ?? 0).start()
     }
 }
