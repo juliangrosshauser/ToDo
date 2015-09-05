@@ -22,7 +22,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
         let storeItem: StoreItem = { [unowned self] text in
             guard let viewModel = self.viewModel as? TodoViewModel else { return SignalProducer.never }
-            return viewModel.appendTodo(text, list: self.list!)
+            return viewModel.appendTodo(text)
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
@@ -78,7 +78,7 @@ extension TodoTableController {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
             guard let viewModel = viewModel as? TodoViewModel else { return }
-            viewModel.removeTodo(cell.id, list: self.list!)
+            viewModel.removeTodo(cell.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -89,6 +89,6 @@ extension TodoTableController {
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         guard let viewModel = viewModel as? TodoViewModel else { return }
-        viewModel.moveTodo(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row, list: self.list!)
+        viewModel.moveTodo(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
     }
 }

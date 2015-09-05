@@ -24,15 +24,15 @@ class TodoViewModel: BaseViewModel {
 
     //MARK: Managing Todos
 
-    func appendTodo(text: String, list: List) -> SignalProducer<Void, NoError> {
-        return SignalProducer(value: store.appendTodo(text, list: list))
+    func appendTodo(text: String) -> SignalProducer<Void, NoError> {
+        return SignalProducer(value: store.appendTodo(text, list: list.value!))
     }
 
-    func removeTodo(todoID: String, list: List) {
-        store.removeTodo(todoID, list: list)
+    func removeTodo(todoID: String) {
+        store.removeTodo(todoID, list: list.value!)
     }
 
-    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int, list: List) {
-        store.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex, list: list)
+    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int) {
+        store.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex, list: list.value!)
     }
 }
