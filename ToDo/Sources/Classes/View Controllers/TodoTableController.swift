@@ -27,6 +27,14 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
+
+        guard let viewModel = self.viewModel as? TodoViewModel else { return }
+        list <~ viewModel.list.producer.on(next: { [unowned self] list in
+            guard list != self.list.value else { return }
+            self.list.value = list
+            self.tableView.reloadData()
+            self.title = list?.name ?? "\(self.itemType)s"
+        })
     }
 
     required init?(coder aDecoder: NSCoder) {
