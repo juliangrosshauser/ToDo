@@ -20,6 +20,7 @@ class ListViewModel: BaseViewModel {
     override init() {
         super.init()
         itemCount.value = store.objects(List).count
+        editEnabled <~ itemCount.producer.map { $0 > 0 ? true : false }
     }
 
     //MARK: Managing Lists
