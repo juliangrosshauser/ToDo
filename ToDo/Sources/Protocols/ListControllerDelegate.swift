@@ -8,5 +8,5 @@
 
 protocol ListControllerDelegate: class {
     
-    var list: List? { get set }
+    func listChanged(list: List?)
 }

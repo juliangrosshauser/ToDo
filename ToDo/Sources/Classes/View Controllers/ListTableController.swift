@@ -84,7 +84,7 @@ extension ListTableController {
 extension ListTableController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.list = viewModel.objects(List)[indexPath.row]
+        delegate?.listChanged(viewModel.objects(List)[indexPath.row])
         
         guard let splitViewController = splitViewController, detailViewController = delegate as? UIViewController else { return }
 
