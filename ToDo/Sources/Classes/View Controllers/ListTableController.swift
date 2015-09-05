@@ -92,11 +92,7 @@ extension ListTableController {
             splitViewController.showDetailViewController(detailViewController, sender: nil)
         } else {
             guard splitViewController.displayMode == .PrimaryOverlay else { return }
-            
-            UIView.animateWithDuration(0.3) {
-                splitViewController.preferredDisplayMode = .PrimaryHidden
-            }
-            
+            UIView.animateWithDuration(0.3) { splitViewController.preferredDisplayMode = .PrimaryHidden }
             splitViewController.preferredDisplayMode = .Automatic
         }
     }

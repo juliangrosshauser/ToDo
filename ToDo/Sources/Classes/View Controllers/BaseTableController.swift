@@ -44,10 +44,7 @@ class BaseTableController: UITableViewController {
         }
 
         edit = Action { [unowned self] execute in
-            if execute {
-                self.viewModel.editItems.apply(self.tableView.editing).start()
-            }
-
+            if execute { self.viewModel.editItems.apply(self.tableView.editing).start() }
             return SignalProducer.empty
         }
 

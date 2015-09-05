@@ -76,9 +76,7 @@ extension TodoTableController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
-        
         cell.configure(list!.todos[indexPath.row])
-        
         return cell
     }
     
