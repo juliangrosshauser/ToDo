@@ -21,7 +21,6 @@ class BaseTableController: UITableViewController {
     var addItem: Action<StoreItem, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
-    var editItems: Action<Bool, Bool, NoError>!
     private(set) var edit: Action<Bool, Void, NoError>!
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
     let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: CocoaAction.selector)
@@ -41,30 +40,6 @@ class BaseTableController: UITableViewController {
 
             return itemDescription.takeLast(1).flatMap(.Concat) { description in
                 storeItem(description: description)
-            }
-        }
-
-        editItems = Action(enabledIf: viewModel.editEnabled) { [unowned self] execute in
-            guard execute else { return SignalProducer.empty }
-
-            return SignalProducer { observer, _ in
-                self.setEditing(!self.tableView.editing, animated: true)
-                sendNext(observer, self.tableView.editing)
-                sendCompleted(observer)
-            }
-        }
-
-        editItems.unsafeCocoaAction = CocoaAction(editItems) { input in
-            switch input {
-            case is UIBarButtonItem:
-                return true
-
-            case let longPressGestureRecognizer as UILongPressGestureRecognizer:
-                guard longPressGestureRecognizer.state == .Ended else { return false }
-                return true
-
-            default:
-                return false
             }
         }
 
@@ -107,8 +82,8 @@ class BaseTableController: UITableViewController {
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
         })
 
-        editItems.values.observe(next: { [unowned self] editing in
-            self.viewModel.addEnabled.value = !editing
+        viewModel.editItems.values.observe(next: { [unowned self] editing in
+            self.setEditing(editing, animated: true)
 
             if editing {
                 self.navigationItem.leftBarButtonItem = self.doneButton
