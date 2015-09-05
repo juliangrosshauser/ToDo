@@ -10,6 +10,10 @@ import ReactiveCocoa
 
 class TodoViewModel: BaseViewModel {
 
+    //MARK: Properties
+
+    let list: MutableProperty<List?> = MutableProperty(nil)
+
     //MARK: Managing Todos
 
     func appendTodo(text: String, list: List) -> SignalProducer<Void, NoError> {
