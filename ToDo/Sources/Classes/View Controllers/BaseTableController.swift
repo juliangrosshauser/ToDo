@@ -22,6 +22,7 @@ class BaseTableController: UITableViewController {
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
     var editItems: Action<Bool, Bool, NoError>!
+    private(set) var edit: Action<Bool, Void, NoError>!
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
     let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: CocoaAction.selector)
 
@@ -66,8 +67,31 @@ class BaseTableController: UITableViewController {
                 return false
             }
         }
-        editButton.target = editItems.unsafeCocoaAction
-        doneButton.target = editItems.unsafeCocoaAction
+
+        edit = Action { [unowned self] execute in
+            if execute {
+                self.viewModel.editItems.apply(self.tableView.editing).start()
+            }
+
+            return SignalProducer.empty
+        }
+
+        edit.unsafeCocoaAction = CocoaAction(edit) { input in
+            switch input {
+            case is UIBarButtonItem:
+                return true
+
+            case let longPressGestureRecognizer as UILongPressGestureRecognizer:
+                guard longPressGestureRecognizer.state == .Ended else { return false }
+                return true
+
+            default:
+                return false
+            }
+        }
+
+        editButton.target = edit.unsafeCocoaAction
+        doneButton.target = edit.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
         viewModel.addEnabled.producer.start(next: { [unowned self] value in
@@ -111,7 +135,7 @@ class BaseTableController: UITableViewController {
 
         viewModel.editEnabled.value = enableEditButton()
 
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: editItems.unsafeCocoaAction, action: CocoaAction.selector)
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: edit.unsafeCocoaAction, action: CocoaAction.selector)
         longPressGestureRecognizer.delaysTouchesBegan = true
         tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
