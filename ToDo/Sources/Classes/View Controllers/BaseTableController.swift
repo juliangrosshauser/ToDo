@@ -84,12 +84,7 @@ class BaseTableController: UITableViewController {
 
         viewModel.editItems.values.observe(next: { [unowned self] editing in
             self.setEditing(editing, animated: true)
-
-            if editing {
-                self.navigationItem.leftBarButtonItem = self.doneButton
-            } else {
-                self.navigationItem.leftBarButtonItem = self.editButton
-            }
+            self.navigationItem.leftBarButtonItem = editing ? self.doneButton : self.editButton
         })
     }
 
