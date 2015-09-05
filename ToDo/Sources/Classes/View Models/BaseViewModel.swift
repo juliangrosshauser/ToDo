@@ -18,6 +18,15 @@ class BaseViewModel {
     let addEnabled = MutableProperty(true)
     let editEnabled = MutableProperty(true)
 
+    let editItems: Action<Bool, Bool, NoError>
+
+    //MARK: Initialization
+
+    init() {
+        editItems = Action(enabledIf: editEnabled) { SignalProducer(value: !$0) }
+        addEnabled <~ editItems.values.map { !$0 }
+    }
+
     //MARK: Get Objects
 
     func objects<T: BaseObject>(type: T.Type) -> Results<T> {
