@@ -12,28 +12,8 @@ import ReactiveCocoa
 class TodoTableController: BaseTableController, ListControllerDelegate {
 
     //MARK: ListControllerDelegate
-    
-    var list: List? {
-        didSet {
-            guard list != oldValue else { return }
-            tableView.reloadData()
-            newNumberOfItems()
-            
-            if let list = list {
-                title = list.name
-                
-                if (!viewModel.addEnabled.value) {
-                    viewModel.addEnabled.value = true
-                }
-            } else {
-                title = "\(itemType)s"
-                
-                if (viewModel.addEnabled.value) {
-                    viewModel.addEnabled.value = false
-                }
-            }
-        }
-    }
+
+    let list: MutableProperty<List?> = MutableProperty(nil)
 
     //MARK: Initialization
 
@@ -58,7 +38,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard list == nil else { return }
+        guard list.value == nil else { return }
         guard let splitViewController = splitViewController where splitViewController.displayMode == .PrimaryHidden else { return }
         splitViewController.preferredDisplayMode = .PrimaryOverlay
         splitViewController.preferredDisplayMode = .Automatic
@@ -77,12 +57,12 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 extension TodoTableController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list?.todos.count ?? 0
+        return list.value?.todos.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
-        cell.configure(list!.todos[indexPath.row])
+        cell.configure(list.value!.todos[indexPath.row])
         return cell
     }
     
