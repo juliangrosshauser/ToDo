@@ -39,7 +39,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
     init() {
         super.init(itemType: .Todo, viewModel: TodoViewModel())
-        viewModel.addEnabled.value = false
 
         let storeItem: StoreItem = { [unowned self] text in
             guard let viewModel = self.viewModel as? TodoViewModel else { return SignalProducer.never }

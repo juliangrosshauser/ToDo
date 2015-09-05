@@ -14,6 +14,13 @@ class TodoViewModel: BaseViewModel {
 
     let list: MutableProperty<List?> = MutableProperty(nil)
 
+    //MARK: Initialization
+
+    override init() {
+        super.init()
+        addEnabled <~ list.producer.map { $0 != nil ? true : false }
+    }
+
     //MARK: Managing Todos
 
     func appendTodo(text: String, list: List) -> SignalProducer<Void, NoError> {
