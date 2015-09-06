@@ -13,23 +13,22 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 
     //MARK: ListControllerDelegate
 
+    private let todoViewModel = TodoViewModel()
     let list: MutableProperty<List?> = MutableProperty(nil)
 
     //MARK: Initialization
 
     init() {
-        super.init(itemType: .Todo, viewModel: TodoViewModel())
+        super.init(itemType: .Todo, viewModel: todoViewModel)
 
         let storeItem: StoreItem = { [unowned self] text in
-            guard let viewModel = self.viewModel as? TodoViewModel else { return SignalProducer.never }
-            return viewModel.appendTodo(text)
+            return self.todoViewModel.appendTodo(text)
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
 
-        guard let viewModel = self.viewModel as? TodoViewModel else { return }
-        list <~ viewModel.list.producer.on(next: { [unowned self] list in
+        list <~ todoViewModel.list.producer.on(next: { [unowned self] list in
             guard list != self.list.value else { return }
             self.list.value = list
             self.tableView.reloadData()
@@ -55,8 +54,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     //MARK: ListControllerDelegate
 
     func listChanged(list: List?) {
-        guard let viewModel = self.viewModel as? TodoViewModel else { return }
-        viewModel.list.value = list
+        todoViewModel.list.value = list
     }
 }
 
@@ -77,8 +75,7 @@ extension TodoTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            guard let viewModel = viewModel as? TodoViewModel else { return }
-            viewModel.removeTodo(cell.id)
+            todoViewModel.removeTodo(cell.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -88,7 +85,6 @@ extension TodoTableController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        guard let viewModel = viewModel as? TodoViewModel else { return }
-        viewModel.moveTodo(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+        todoViewModel.moveTodo(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
     }
 }
