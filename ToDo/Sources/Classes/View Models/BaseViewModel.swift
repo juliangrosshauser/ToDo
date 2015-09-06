@@ -28,6 +28,7 @@ class BaseViewModel {
     init() {
         editItems = Action(enabledIf: editEnabled) { SignalProducer(value: !$0) }
         addEnabled <~ editItems.values.map { !$0 }
+        validItemDescription <~ itemDescription.producer.map { !$0.isEmpty }
     }
 
     //MARK: Get Objects
