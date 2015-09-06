@@ -20,6 +20,10 @@ class TodoViewModel: BaseViewModel {
         super.init()
         addEnabled <~ list.producer.map { $0 != nil ? true : false }
         editEnabled <~ list.producer.map { $0?.todos.count ?? 0 > 0 }
+
+        addItem = Action(enabledIf: addEnabled) { [unowned self] _ in
+            self.appendTodo(self.itemDescription.value)
+        }
     }
 
     //MARK: Managing Todos

@@ -18,6 +18,7 @@ class BaseViewModel {
     let addEnabled = MutableProperty(true)
     let editEnabled = MutableProperty(true)
 
+    var addItem: Action<Void, Void, NoError>!
     let editItems: Action<Bool, Bool, NoError>
 
     let itemDescription = MutableProperty("")

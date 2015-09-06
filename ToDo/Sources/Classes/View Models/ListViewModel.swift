@@ -21,6 +21,10 @@ class ListViewModel: BaseViewModel {
         super.init()
         itemCount.value = store.objects(List).count
         editEnabled <~ itemCount.producer.map { $0 > 0 ? true : false }
+
+        addItem = Action(enabledIf: addEnabled) { [unowned self] _ in
+            self.addList(self.itemDescription.value)
+        }
     }
 
     //MARK: Managing Lists
