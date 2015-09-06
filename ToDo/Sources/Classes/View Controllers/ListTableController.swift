@@ -14,24 +14,23 @@ class ListTableController: BaseTableController {
 
     //MARK: Properties
 
+    private let listViewModel = ListViewModel()
     weak var delegate: ListControllerDelegate?
     private let itemCount: MutableProperty<Int> = MutableProperty(0)
 
     //MARK: Initialization
 
     init() {
-        super.init(itemType: .List, viewModel: ListViewModel())
+        super.init(itemType: .List, viewModel: listViewModel)
 
         let storeItem: StoreItem = { [unowned self] name in
-            guard let viewModel = self.viewModel as? ListViewModel else { return SignalProducer.never }
-            return viewModel.addList(name)
+            return self.listViewModel.addList(name)
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
         addButton.target = addItem.unsafeCocoaAction
 
-        guard let viewModel = self.viewModel as? ListViewModel else { return }
-        itemCount <~ viewModel.itemCount
+        itemCount <~ listViewModel.itemCount
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -44,13 +43,13 @@ class ListTableController: BaseTableController {
 extension ListTableController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.objects(List).count
+        return listViewModel.objects(List).count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
-        cell.configure(viewModel.objects(List)[indexPath.row])
+        cell.configure(listViewModel.objects(List)[indexPath.row])
         cell.accessoryType = .DisclosureIndicator
 
         let selectedBackgroundView = UIView()
@@ -63,8 +62,7 @@ extension ListTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            guard let viewModel = viewModel as? ListViewModel else { return }
-            viewModel.deleteList(cell.id)
+            listViewModel.deleteList(cell.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -74,8 +72,7 @@ extension ListTableController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        guard let viewModel = viewModel as? ListViewModel else { return }
-        viewModel.moveList(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+        listViewModel.moveList(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
     }
 }
 
@@ -84,7 +81,7 @@ extension ListTableController {
 extension ListTableController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.listChanged(viewModel.objects(List)[indexPath.row])
+        delegate?.listChanged(listViewModel.objects(List)[indexPath.row])
         
         guard let splitViewController = splitViewController, detailViewController = delegate as? UIViewController else { return }
 
