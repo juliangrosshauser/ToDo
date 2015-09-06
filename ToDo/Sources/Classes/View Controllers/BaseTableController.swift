@@ -16,7 +16,7 @@ class BaseTableController: UITableViewController {
     //MARK: Properties
 
     let itemType: TableItemType
-    let viewModel: BaseViewModel
+    private let viewModel: BaseViewModel
 
     var addItem: Action<StoreItem, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
