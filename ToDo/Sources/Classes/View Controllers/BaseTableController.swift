@@ -17,9 +17,9 @@ class BaseTableController: UITableViewController {
     private let viewModel: BaseViewModel
 
     private(set) var addItem: Action<Void, Void, NoError>!
-    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
-
     private(set) var edit: Action<Bool, Void, NoError>!
+
+    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
     let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: CocoaAction.selector)
 
