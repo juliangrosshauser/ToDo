@@ -20,6 +20,8 @@ class BaseViewModel {
 
     let editItems: Action<Bool, Bool, NoError>
 
+    let itemDescription = MutableProperty("")
+
     //MARK: Initialization
 
     init() {
