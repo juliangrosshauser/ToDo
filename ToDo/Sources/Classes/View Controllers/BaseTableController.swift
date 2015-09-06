@@ -107,16 +107,14 @@ class BaseTableController: UITableViewController {
 
     //MARK: Get Item Description
 
-    func getItemDescription(observer: Signal<String, NoError>.Observer) {
+    func getItemDescription() {
         let newItemPrompt = UIAlertController(title: "New \(itemType)", message: "Please enter text for new " + String(itemType).lowercaseString, preferredStyle: .Alert)
 
         let addNewItemAction = UIAlertAction(title: "Add \(itemType)", style: .Default) { _ in
-            sendCompleted(observer)
+            viewModel.addItem.apply().start()
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { _ in
-            sendInterrupted(observer)
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 
         viewModel.validItemDescription.producer.start(next: { addNewItemAction.enabled = $0 })
         newItemPrompt.addAction(addNewItemAction)
