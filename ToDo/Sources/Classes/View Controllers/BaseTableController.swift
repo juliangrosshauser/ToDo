@@ -122,16 +122,9 @@ class BaseTableController: UITableViewController {
         newItemPrompt.addAction(addNewItemAction)
         newItemPrompt.addAction(cancelAction)
 
-        newItemPrompt.addTextFieldWithConfigurationHandler { textField in
+        newItemPrompt.addTextFieldWithConfigurationHandler { [unowned self] textField in
             textField.placeholder = String(self.itemType)
-
-            let description = textField.rac_textSignal()
-
-            description.subscribeNext { input in
-                let text = input as! String
-                sendNext(observer, text)
-                newItemPrompt.actions.first!.enabled = text.characters.count > 0
-            }
+            self.viewModel.itemDescription <~ textField.rac_textSignal().toSignalProducer().map({ $0 as! String }).flatMapError { _ in SignalProducer.empty }
         }
 
         presentViewController(newItemPrompt, animated: true, completion: nil)
