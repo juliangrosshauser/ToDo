@@ -17,7 +17,7 @@ class BaseTableController: UITableViewController {
     private let viewModel: BaseViewModel
 
     private(set) var addItem: Action<Void, Void, NoError>!
-    private(set) var edit: Action<Bool, Void, NoError>!
+    private(set) var editItems: Action<Bool, Void, NoError>!
 
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
     let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: CocoaAction.selector)
@@ -35,13 +35,13 @@ class BaseTableController: UITableViewController {
             SignalProducer(value: self.getItemDescription())
         }
 
-        edit = Action(enabledIf: viewModel.editEnabled) { [unowned self] execute in
+        editItems = Action(enabledIf: viewModel.editEnabled) { [unowned self] execute in
             if execute { self.viewModel.editItems.apply(self.tableView.editing).start() }
             return SignalProducer.empty
         }
 
         addItem.unsafeCocoaAction = CocoaAction(addItem, input: ())
-        edit.unsafeCocoaAction = CocoaAction(edit) { input in
+        editItems.unsafeCocoaAction = CocoaAction(editItems) { input in
             switch input {
             case is UIBarButtonItem:
                 return true
@@ -56,8 +56,8 @@ class BaseTableController: UITableViewController {
         }
 
         addButton.target = addItem.unsafeCocoaAction
-        editButton.target = edit.unsafeCocoaAction
-        doneButton.target = edit.unsafeCocoaAction
+        editButton.target = editItems.unsafeCocoaAction
+        doneButton.target = editItems.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
         viewModel.addEnabled.producer.start(next: { [unowned self] value in
@@ -94,7 +94,7 @@ class BaseTableController: UITableViewController {
         navigationItem.leftBarButtonItem = editButton
         navigationItem.leftItemsSupplementBackButton = true
 
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: edit.unsafeCocoaAction, action: CocoaAction.selector)
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: editItems.unsafeCocoaAction, action: CocoaAction.selector)
         longPressGestureRecognizer.delaysTouchesBegan = true
         tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
