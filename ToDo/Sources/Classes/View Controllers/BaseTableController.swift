@@ -35,7 +35,7 @@ class BaseTableController: UITableViewController {
             SignalProducer(value: self.getItemDescription())
         }
 
-        edit = Action { [unowned self] execute in
+        edit = Action(enabledIf: viewModel.editEnabled) { [unowned self] execute in
             if execute { self.viewModel.editItems.apply(self.tableView.editing).start() }
             return SignalProducer.empty
         }
