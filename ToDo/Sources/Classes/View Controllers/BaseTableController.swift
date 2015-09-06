@@ -118,7 +118,7 @@ class BaseTableController: UITableViewController {
             sendInterrupted(observer)
         }
 
-        addNewItemAction.enabled = false
+        viewModel.validItemDescription.producer.start(next: { addNewItemAction.enabled = $0 })
         newItemPrompt.addAction(addNewItemAction)
         newItemPrompt.addAction(cancelAction)
 
