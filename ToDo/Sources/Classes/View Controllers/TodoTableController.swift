@@ -21,13 +21,6 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
     init() {
         super.init(itemType: .Todo, viewModel: todoViewModel)
 
-        let storeItem: StoreItem = { [unowned self] text in
-            return self.todoViewModel.appendTodo(text)
-        }
-
-        addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
-        addButton.target = addItem.unsafeCocoaAction
-
         list <~ todoViewModel.list.producer.on(next: { [unowned self] list in
             guard list != self.list.value else { return }
             self.list.value = list

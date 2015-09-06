@@ -22,14 +22,6 @@ class ListTableController: BaseTableController {
 
     init() {
         super.init(itemType: .List, viewModel: listViewModel)
-
-        let storeItem: StoreItem = { [unowned self] name in
-            return self.listViewModel.addList(name)
-        }
-
-        addItem.unsafeCocoaAction = CocoaAction(addItem, input: storeItem)
-        addButton.target = addItem.unsafeCocoaAction
-
         itemCount <~ listViewModel.itemCount
     }
 

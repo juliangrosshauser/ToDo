@@ -11,14 +11,12 @@ import ReactiveCocoa
 
 class BaseTableController: UITableViewController {
 
-    typealias StoreItem = (description: String) -> SignalProducer<Void, NoError>
-
     //MARK: Properties
 
     let itemType: TableItemType
     private let viewModel: BaseViewModel
 
-    var addItem: Action<StoreItem, Void, NoError>!
+    private(set) var addItem: Action<Void, Void, NoError>!
     let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: CocoaAction.selector)
 
     private(set) var edit: Action<Bool, Void, NoError>!
@@ -33,14 +31,8 @@ class BaseTableController: UITableViewController {
         super.init(style: .Plain)
         title = "\(itemType)s"
 
-        addItem = Action(enabledIf: viewModel.addEnabled) { [unowned self] storeItem in
-            let itemDescription: SignalProducer<String, NoError> = SignalProducer { observer, _ in
-                self.getItemDescription(observer)
-            }
-
-            return itemDescription.takeLast(1).flatMap(.Concat) { description in
-                storeItem(description: description)
-            }
+        addItem = Action(enabledIf: viewModel.addEnabled) { [unowned self] _ in
+            SignalProducer(value: self.getItemDescription())
         }
 
         edit = Action { [unowned self] execute in
@@ -48,6 +40,7 @@ class BaseTableController: UITableViewController {
             return SignalProducer.empty
         }
 
+        addItem.unsafeCocoaAction = CocoaAction(addItem, input: ())
         edit.unsafeCocoaAction = CocoaAction(edit) { input in
             switch input {
             case is UIBarButtonItem:
@@ -62,6 +55,7 @@ class BaseTableController: UITableViewController {
             }
         }
 
+        addButton.target = addItem.unsafeCocoaAction
         editButton.target = edit.unsafeCocoaAction
         doneButton.target = edit.unsafeCocoaAction
 
@@ -75,7 +69,7 @@ class BaseTableController: UITableViewController {
             self.editButton.enabled = value
         })
 
-        addItem.values.observe(next: { [unowned self] in
+        viewModel.addItem.values.observe(next: { [unowned self] in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
         })
 
