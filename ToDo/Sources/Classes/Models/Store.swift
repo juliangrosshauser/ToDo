@@ -32,11 +32,16 @@ class Store {
         }
     }
 
-    func appendTodo(text: String, list: List) {
-        let todo = Todo(text: text)
+    func deleteList(listID: String) {
+        guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
+        let listsToUpdate = realm.objects(List).filter("index > %@", list.index)
 
-        realm.write {
-            list.todos.append(todo)
+        realm.write { [unowned self] in
+            self.realm.delete(list)
+
+            for list in listsToUpdate {
+                list.index--
+            }
         }
     }
 
@@ -52,16 +57,11 @@ class Store {
 
     //MARK: Managing Todos
 
-    func deleteList(listID: String) {
-        guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
-        let listsToUpdate = realm.objects(List).filter("index > %@", list.index)
+    func appendTodo(text: String, list: List) {
+        let todo = Todo(text: text)
 
-        realm.write { [unowned self] in
-            self.realm.delete(list)
-
-            for list in listsToUpdate {
-                list.index--
-            }
+        realm.write {
+            list.todos.append(todo)
         }
     }
     
