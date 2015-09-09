@@ -60,13 +60,13 @@ class BaseTableController: UITableViewController {
         doneButton.target = editItems.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
-        viewModel.addEnabled.producer.start(next: { [unowned self] value in
-            self.addButton.enabled = value
+        viewModel.addEnabled.producer.start(next: { [unowned self] enabled in
+            self.addButton.enabled = enabled
         })
 
         // couple `editEnabled` with `editButton.enabled`
-        viewModel.editEnabled.producer.start(next: { [unowned self] value in
-            self.editButton.enabled = value
+        viewModel.editEnabled.producer.start(next: { [unowned self] enabled in
+            self.editButton.enabled = enabled
         })
 
         viewModel.addItem.values.observe(next: { [unowned self] in
