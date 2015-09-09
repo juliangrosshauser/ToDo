@@ -64,9 +64,10 @@ class BaseTableController: UITableViewController {
             self.addButton.enabled = enabled
         })
 
-        // couple `editEnabled` with `editButton.enabled`
+        // couple `editEnabled` with `editButton.enabled` and `doneButton.enabled`
         viewModel.editEnabled.producer.start(next: { [unowned self] enabled in
             self.editButton.enabled = enabled
+            self.doneButton.enabled = enabled
         })
 
         viewModel.addItem.values.observe(next: { [unowned self] in
