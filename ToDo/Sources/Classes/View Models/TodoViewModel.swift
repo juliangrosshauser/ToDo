@@ -24,6 +24,14 @@ class TodoViewModel: BaseViewModel {
         addItem = Action(enabledIf: addEnabled) { [unowned self] _ in
             self.appendTodo(self.itemDescription.value)
         }
+
+        deleteItem = Action(enabledIf: editEnabled) { [unowned self] todoID in
+            self.removeTodo(todoID)
+        }
+
+        moveItem = Action(enabledIf: editEnabled) { [unowned self] (sourceIndex, destinationIndex) in
+            self.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
+        }
     }
 
     //MARK: Managing Todos

@@ -20,6 +20,8 @@ class BaseViewModel {
 
     var addItem: Action<Void, Int, NoError>!
     let editItems: Action<Bool, Bool, NoError>
+    var deleteItem: Action<String, (deletedIndex: Int, itemCount: Int), NoError>!
+    var moveItem: Action<(Int, Int), Void, NoError>!
 
     let itemDescription = MutableProperty("")
     let validItemDescription = MutableProperty(false)

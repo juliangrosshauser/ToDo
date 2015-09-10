@@ -25,6 +25,14 @@ class ListViewModel: BaseViewModel {
         addItem = Action(enabledIf: addEnabled) { [unowned self] _ in
             self.addList(self.itemDescription.value)
         }
+        
+        deleteItem = Action(enabledIf: editEnabled) { [unowned self] listID in
+            self.deleteList(listID)
+        }
+        
+        moveItem = Action(enabledIf: editEnabled) { [unowned self] (sourceIndex, destinationIndex) in
+            self.moveList(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
+        }
     }
 
     //MARK: Managing Lists
