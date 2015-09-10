@@ -34,9 +34,10 @@ class Store {
         return realm.objects(List).count
     }
 
-    func deleteList(listID: String) {
-        guard let list = realm.objects(List).filter("id == %@", listID).first else { return }
-        let listsToUpdate = realm.objects(List).filter("index > %@", list.index)
+    func deleteList(listID: String) -> (deletedIndex: Int, itemCount: Int) {
+        guard let list = realm.objects(List).filter("id == %@", listID).first else { return (0, 0) }
+        let index = list.index
+        let listsToUpdate = realm.objects(List).filter("index > %@", index)
 
         realm.write { [unowned self] in
             self.realm.delete(list)
@@ -45,6 +46,8 @@ class Store {
                 list.index--
             }
         }
+
+        return (deletedIndex: index, itemCount: realm.objects(List).count)
     }
 
     func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) {
@@ -69,14 +72,16 @@ class Store {
         return list.todos.count
     }
     
-    func removeTodo(todoID: String, list: List) {
-        guard let index = list.todos.indexOf("id == %@", todoID) else { return }
+    func removeTodo(todoID: String, list: List) -> (deletedIndex: Int, itemCount: Int) {
+        guard let index = list.todos.indexOf("id == %@", todoID) else { return (0, 0) }
         let todo = list.todos[index]
         
         realm.write { [unowned self] in
             list.todos.removeAtIndex(index)
             self.realm.delete(todo)
         }
+
+        return (deletedIndex: index, itemCount: realm.objects(Todo).count)
     }
 
     func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int, list: List) {
