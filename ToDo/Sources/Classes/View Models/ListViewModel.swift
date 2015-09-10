@@ -14,7 +14,7 @@ class ListViewModel: BaseViewModel {
 
     override init() {
         super.init()
-        itemCount.value = store.objects(List).count
+        itemCount <~ objects(List).map { $0.count }
         editEnabled <~ itemCount.producer.map { $0 > 0 ? true : false }
 
         addItem = Action(enabledIf: addEnabled) { [unowned self] _ in
@@ -28,6 +28,9 @@ class ListViewModel: BaseViewModel {
         moveItem = Action(enabledIf: editEnabled) { [unowned self] (sourceIndex, destinationIndex) in
             self.moveList(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
         }
+        
+        itemCount <~ addItem.values
+        itemCount <~ deleteItem.values.map { (_, itemCount) in itemCount }
     }
 
     //MARK: Managing Lists
@@ -37,12 +40,10 @@ class ListViewModel: BaseViewModel {
     }
 
     func addList(name: String) -> SignalProducer<Int, NoError> {
-        itemCount.value++
         return SignalProducer(value: store.addList(name))
     }
 
     func deleteList(listID: String) -> SignalProducer<(deletedIndex: Int, itemCount: Int), NoError> {
-        itemCount.value--
         return SignalProducer(value: store.deleteList(listID))
     }
 

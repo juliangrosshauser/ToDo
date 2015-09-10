@@ -32,6 +32,9 @@ class TodoViewModel: BaseViewModel {
         moveItem = Action(enabledIf: editEnabled) { [unowned self] (sourceIndex, destinationIndex) in
             self.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
         }
+
+        itemCount <~ addItem.values
+        itemCount <~ deleteItem.values.map { (_, itemCount) in itemCount }
     }
 
     //MARK: Managing Todos

@@ -26,7 +26,6 @@ class BaseViewModel {
     let itemDescription = MutableProperty("")
     let validItemDescription = MutableProperty(false)
 
-    //TODO: Bind to add/delete signal instead of setting value manually
     let itemCount: MutableProperty<Int> = MutableProperty(0)
 
     //MARK: Initialization
