@@ -32,6 +32,10 @@ class ListViewModel: BaseViewModel {
 
     //MARK: Managing Lists
 
+    func item(index: Int) -> List {
+        return super.item(type: List.self, index: index)
+    }
+
     func addList(name: String) -> SignalProducer<Int, NoError> {
         itemCount.value++
         return SignalProducer(value: store.addList(name))

@@ -36,6 +36,10 @@ class TodoViewModel: BaseViewModel {
 
     //MARK: Managing Todos
 
+    func item(index: Int) -> Todo {
+        return super.item(type: Todo.self, index: index)
+    }
+
     func appendTodo(text: String) -> SignalProducer<Int, NoError> {
         return SignalProducer(value: store.appendTodo(text, list: list.value!))
     }

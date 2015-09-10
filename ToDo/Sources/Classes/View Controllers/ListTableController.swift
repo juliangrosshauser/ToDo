@@ -41,7 +41,7 @@ extension ListTableController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
 
-        cell.configure(listViewModel.objects(List)[indexPath.row])
+        cell.configure(listViewModel.item(indexPath.row))
         cell.accessoryType = .DisclosureIndicator
 
         let selectedBackgroundView = UIView()
@@ -73,7 +73,7 @@ extension ListTableController {
 extension ListTableController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.listChanged(listViewModel.objects(List)[indexPath.row])
+        delegate?.listChanged(listViewModel.item(indexPath.row))
         
         guard let splitViewController = splitViewController, detailViewController = delegate as? UIViewController else { return }
 
