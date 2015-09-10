@@ -29,7 +29,7 @@ class ListViewModel: BaseViewModel {
 
     //MARK: Managing Lists
 
-    func addList(name: String) -> SignalProducer<Void, NoError> {
+    func addList(name: String) -> SignalProducer<Int, NoError> {
         itemCount.value++
         return SignalProducer(value: store.addList(name))
     }

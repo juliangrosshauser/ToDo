@@ -70,8 +70,8 @@ class BaseTableController: UITableViewController {
             self.doneButton.enabled = enabled
         })
 
-        viewModel.addItem.values.observe(next: { [unowned self] in
-            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Bottom)
+        viewModel.addItem.values.observe(next: { [unowned self] itemCount in
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: itemCount - 1, inSection: 0)], withRowAnimation: .Bottom)
         })
 
         viewModel.editItems.values.observe(next: { [unowned self] editing in

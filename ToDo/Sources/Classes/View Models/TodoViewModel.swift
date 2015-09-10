@@ -28,7 +28,7 @@ class TodoViewModel: BaseViewModel {
 
     //MARK: Managing Todos
 
-    func appendTodo(text: String) -> SignalProducer<Void, NoError> {
+    func appendTodo(text: String) -> SignalProducer<Int, NoError> {
         return SignalProducer(value: store.appendTodo(text, list: list.value!))
     }
 
