@@ -10,11 +10,6 @@ import ReactiveCocoa
 
 class ListViewModel: BaseViewModel {
 
-    //MARK: Properties
-
-    //TODO: Bind to add/delete signal instead of setting value manually
-    let itemCount: MutableProperty<Int> = MutableProperty(0)
-
     //MARK: Initialization
 
     override init() {
