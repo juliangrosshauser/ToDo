@@ -74,9 +74,9 @@ class BaseTableController: UITableViewController {
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: itemCount - 1, inSection: 0)], withRowAnimation: .Bottom)
         })
 
-        viewModel.editItems.values.observe(next: { [unowned self] editing in
-            self.setEditing(editing, animated: true)
-            self.navigationItem.leftBarButtonItem = editing ? self.doneButton : self.editButton
+        viewModel.editingMode.producer.start(next: {
+            self.setEditing($0, animated: true)
+            self.navigationItem.leftBarButtonItem = $0 ? self.doneButton : self.editButton
         })
 
         viewModel.deleteItem.values.observe(next: { [unowned self] (index, _) in
