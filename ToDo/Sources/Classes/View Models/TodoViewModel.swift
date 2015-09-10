@@ -32,8 +32,8 @@ class TodoViewModel: BaseViewModel {
         return SignalProducer(value: store.appendTodo(text, list: list.value!))
     }
 
-    func removeTodo(todoID: String) {
-        store.removeTodo(todoID, list: list.value!)
+    func removeTodo(todoID: String) -> SignalProducer<(deletedIndex: Int, itemCount: Int), NoError> {
+        return SignalProducer(value: store.removeTodo(todoID, list: list.value!))
     }
 
     func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int) {
