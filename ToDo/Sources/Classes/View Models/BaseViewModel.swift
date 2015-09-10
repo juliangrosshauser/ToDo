@@ -39,7 +39,7 @@ class BaseViewModel {
 
     //MARK: Get Objects
 
-    func objects<T: BaseObject>(type: T.Type) -> Results<T> {
-        return store.objects(type).sorted("index")
+    func objects<T: BaseObject>(type: T.Type) -> SignalProducer<Results<T>, NoError> {
+        return SignalProducer(value: store.objects(type).sorted("index"))
     }
 }
