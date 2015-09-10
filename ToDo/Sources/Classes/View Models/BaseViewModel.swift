@@ -33,9 +33,12 @@ class BaseViewModel {
     //MARK: Initialization
 
     init() {
-        editItems = Action(enabledIf: editEnabled) { SignalProducer(value: !$0) }
-        addEnabled <~ editItems.values.map { !$0 }
+        editItems = Action { SignalProducer(value: !$0) }
+        editEnabled <~ itemCount.producer.map { $0 > 0 ? true : false }
         validItemDescription <~ itemDescription.producer.map { !$0.isEmpty }
+        editingMode <~ editItems.values
+        editingMode <~ editEnabled.producer.filter { !$0 }
+        addEnabled <~ editingMode.producer.map { !$0 }
     }
 
     //MARK: Get Objects
