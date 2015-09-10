@@ -78,6 +78,10 @@ class BaseTableController: UITableViewController {
             self.setEditing(editing, animated: true)
             self.navigationItem.leftBarButtonItem = editing ? self.doneButton : self.editButton
         })
+
+        viewModel.deleteItem.values.observe(next: { [unowned self] (index, _) in
+            self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Fade)
+        })
     }
 
     required init?(coder aDecoder: NSCoder) {
