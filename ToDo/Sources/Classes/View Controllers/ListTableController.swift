@@ -35,7 +35,7 @@ class ListTableController: BaseTableController {
 extension ListTableController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listViewModel.objects(List).count
+        return listViewModel.itemCount.value
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

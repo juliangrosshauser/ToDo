@@ -56,7 +56,7 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
 extension TodoTableController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.value?.todos.count ?? 0
+        return todoViewModel.itemCount.value
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
