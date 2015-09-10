@@ -23,13 +23,15 @@ class Store {
 
     //MARK: Managing Lists
 
-    func addList(name: String) {
+    func addList(name: String) -> Int {
         let list = List(name: name)
         list.index = objects(List.self).count
 
         realm.write { [unowned self] in
             self.realm.add(list)
         }
+
+        return realm.objects(List).count
     }
 
     func deleteList(listID: String) {
@@ -57,12 +59,14 @@ class Store {
 
     //MARK: Managing Todos
 
-    func appendTodo(text: String, list: List) {
+    func appendTodo(text: String, list: List) -> Int {
         let todo = Todo(text: text)
 
         realm.write {
             list.todos.append(todo)
         }
+
+        return list.todos.count
     }
     
     func removeTodo(todoID: String, list: List) {
