@@ -39,7 +39,7 @@ class ListViewModel: BaseViewModel {
         return SignalProducer(value: store.deleteList(listID))
     }
 
-    func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) {
-        store.moveList(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
+    func moveList(sourceIndex sourceIndex: Int, destinationIndex: Int) -> SignalProducer<Void, NoError> {
+        return SignalProducer(value: store.moveList(sourceIndex: sourceIndex, destinationIndex: destinationIndex))
     }
 }

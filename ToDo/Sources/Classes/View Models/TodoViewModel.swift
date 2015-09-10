@@ -36,7 +36,7 @@ class TodoViewModel: BaseViewModel {
         return SignalProducer(value: store.removeTodo(todoID, list: list.value!))
     }
 
-    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int) {
-        store.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex, list: list.value!)
+    func moveTodo(sourceIndex sourceIndex: Int, destinationIndex: Int) -> SignalProducer<Void, NoError> {
+        return SignalProducer(value: store.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex, list: list.value!))
     }
 }
