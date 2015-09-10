@@ -54,8 +54,7 @@ extension ListTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            listViewModel.deleteList(cell.id)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            listViewModel.deleteItem.apply(cell.id).start()
         }
     }
 
@@ -64,7 +63,7 @@ extension ListTableController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        listViewModel.moveList(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+        listViewModel.moveItem.apply((sourceIndexPath.row, destinationIndexPath.row)).start()
     }
 }
 

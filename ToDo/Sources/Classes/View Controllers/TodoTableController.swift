@@ -68,8 +68,7 @@ extension TodoTableController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
-            todoViewModel.removeTodo(cell.id)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            todoViewModel.deleteItem.apply(cell.id).start()
         }
     }
 
@@ -78,6 +77,6 @@ extension TodoTableController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        todoViewModel.moveTodo(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+        todoViewModel.moveItem.apply((sourceIndexPath.row, destinationIndexPath.row)).start()
     }
 }
