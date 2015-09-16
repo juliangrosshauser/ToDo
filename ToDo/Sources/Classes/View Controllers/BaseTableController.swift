@@ -60,28 +60,28 @@ class BaseTableController: UITableViewController {
         doneButton.target = editItems.unsafeCocoaAction
 
         // couple `addEnabled` with `addButton.enabled`
-        viewModel.addEnabled.producer.start(next: { [unowned self] enabled in
+        viewModel.addEnabled.producer.startWithNext { [unowned self] enabled in
             self.addButton.enabled = enabled
-        })
+        }
 
         // couple `editEnabled` with `editButton.enabled` and `doneButton.enabled`
-        viewModel.editEnabled.producer.start(next: { [unowned self] enabled in
+        viewModel.editEnabled.producer.startWithNext { [unowned self] enabled in
             self.editButton.enabled = enabled
             self.doneButton.enabled = enabled
-        })
+        }
 
-        viewModel.addItem.values.observe(next: { [unowned self] itemCount in
+        viewModel.addItem.values.observeNext { [unowned self] itemCount in
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: itemCount - 1, inSection: 0)], withRowAnimation: .Bottom)
-        })
+        }
 
-        viewModel.editingMode.producer.start(next: {
+        viewModel.editingMode.producer.startWithNext {
             self.setEditing($0, animated: true)
             self.navigationItem.leftBarButtonItem = $0 ? self.doneButton : self.editButton
-        })
+        }
 
-        viewModel.deleteItem.values.observe(next: { [unowned self] (index, _) in
+        viewModel.deleteItem.values.observeNext { [unowned self] (index, _) in
             self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: .Fade)
-        })
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -115,7 +115,7 @@ class BaseTableController: UITableViewController {
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 
-        viewModel.validItemDescription.producer.start(next: { addNewItemAction.enabled = $0 })
+        viewModel.validItemDescription.producer.startWithNext { addNewItemAction.enabled = $0 }
         newItemPrompt.addAction(addNewItemAction)
         newItemPrompt.addAction(cancelAction)
 
