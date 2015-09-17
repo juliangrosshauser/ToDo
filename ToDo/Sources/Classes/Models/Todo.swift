@@ -13,6 +13,7 @@ class Todo: BaseObject, CustomStringConvertible {
     //MARK: Properties
 
     dynamic var text = ""
+    dynamic var done = false
 
     //MARK: Initialization
 
