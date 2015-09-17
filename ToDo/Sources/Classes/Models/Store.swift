@@ -89,4 +89,14 @@ class Store {
             list.todos.swap(sourceIndex, destinationIndex)
         }
     }
+
+    func toggleDone(index index: Int, list: List) -> Int {
+        let todo = list.todos[index]
+
+        realm.write {
+            todo.done = !todo.done
+        }
+
+        return index
+    }
 }
