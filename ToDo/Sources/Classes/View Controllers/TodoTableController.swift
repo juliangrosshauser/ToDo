@@ -27,6 +27,16 @@ class TodoTableController: BaseTableController, ListControllerDelegate {
             self.tableView.reloadData()
             self.title = list?.name ?? "\(self.itemType)s"
         })
+
+        todoViewModel.toggleDoneOnTodo.values.observeNext { [unowned self] row in
+            guard let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) else { return }
+
+            if cell.accessoryType == .Checkmark {
+                cell.accessoryType = .None
+            } else {
+                cell.accessoryType = .Checkmark
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
