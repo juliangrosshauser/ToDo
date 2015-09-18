@@ -13,6 +13,7 @@ class TodoViewModel: BaseViewModel {
     //MARK: Properties
 
     let list: MutableProperty<List?> = MutableProperty(nil)
+    var toggleDoneOnTodo: Action<Int, Int, NoError>!
 
     //MARK: Initialization
 
@@ -31,6 +32,10 @@ class TodoViewModel: BaseViewModel {
 
         moveItem = Action(enabledIf: editEnabled) { [unowned self] (sourceIndex, destinationIndex) in
             self.moveTodo(sourceIndex: sourceIndex, destinationIndex: destinationIndex)
+        }
+
+        toggleDoneOnTodo = Action { [unowned self] index in
+            self.toggleDone(index: index)
         }
 
         itemCount <~ addItem.values
