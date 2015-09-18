@@ -80,3 +80,12 @@ extension TodoTableController {
         todoViewModel.moveItem.apply((sourceIndexPath.row, destinationIndexPath.row)).start()
     }
 }
+
+//MARK: UITableViewDelegate
+
+extension TodoTableController {
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        todoViewModel.toggleDoneOnTodo.apply(indexPath.row).start()
+    }
+}
