@@ -102,5 +102,6 @@ extension TodoTableController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         todoViewModel.toggleDoneOnTodo.apply(indexPath.row).start()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
