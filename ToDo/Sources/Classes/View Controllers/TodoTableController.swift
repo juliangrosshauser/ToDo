@@ -72,6 +72,11 @@ extension TodoTableController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TableViewCell)) as! TableViewCell
         cell.configure(todoViewModel.item(indexPath.row))
+
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = Color.lightBlue.colorWithAlphaComponent(0.3)
+        cell.selectedBackgroundView = selectedBackgroundView
+
         return cell
     }
     
