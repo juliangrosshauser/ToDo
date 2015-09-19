@@ -15,5 +15,6 @@ class TableViewCell: UITableViewCell {
         id = item.id
         textLabel?.text = String(item)
         showsReorderControl = true
+        if let todo = item as? Todo where todo.done { accessoryType = .Checkmark }
     }
 }
