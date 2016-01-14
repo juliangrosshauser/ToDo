@@ -383,6 +383,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9CD69A81B583BD30072DDBD /* Build configuration list for PBXNativeTarget "ToDo" */;
 			buildPhases = (
+				B9E094F61C481D0D007170C6 /* Carthage - Compile Frameworks */,
 				B9CD697C1B583BD30072DDBD /* Sources */,
 				B9CD697D1B583BD30072DDBD /* Frameworks */,
 				B9CD697E1B583BD30072DDBD /* Resources */,
@@ -526,6 +527,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		B9E094F61C481D0D007170C6 /* Carthage - Compile Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Carthage - Compile Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -d \"$SRCROOT/Carthage/Build\" ]; then\n    carthage build --platform iOS --no-use-binaries\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
